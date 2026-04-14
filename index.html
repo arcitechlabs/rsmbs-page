@@ -3,10 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RSMBS – Rumah Sakit Muhammadiyah Bandung Selatan</title>
+  <title>RSMBS – Rumah Sakit Mitra Bandung Selatan | Pelayanan 24 Jam</title>
+  <meta name="description" content="Rumah Sakit Mitra Bandung Selatan – Mitra Kesehatan Anda 24 jam di Bandung Selatan. 85 dokter spesialis. Telp: (022) 7310-XXXX." />
+  <meta name="keywords" content="rumah sakit bandung selatan, RS Mitra Bandung Selatan, RSMBS, dokter spesialis bandung, IGD 24 jam bandung selatan, RS bandung selatan" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="RSMBS – Rumah Sakit Mitra Bandung Selatan" />
+  <meta property="og:description" content="Mitra Kesehatan Anda 24 jam. 85 dokter spesialis siap melayani masyarakat Bandung Selatan." />
+  <meta property="og:locale" content="id_ID" />
+  <meta name="theme-color" content="#2E2C71" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -41,12 +50,9 @@
     html { scroll-behavior: smooth; }
 
     /* ── Marquee ── */
-    @keyframes marquee-left  { from { transform: translateX(0) } to { transform: translateX(-50%) } }
-    @keyframes marquee-right { from { transform: translateX(-50%) } to { transform: translateX(0) } }
-    .marquee-track-l  { animation: marquee-left  28s linear infinite; }
-    .marquee-track-r  { animation: marquee-right 28s linear infinite; }
-    .marquee-wrap:hover .marquee-track-l,
-    .marquee-wrap:hover .marquee-track-r { animation-play-state: paused; }
+    @keyframes marquee-left { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+    .marquee-track-l { animation: marquee-left 32s linear infinite; }
+    .marquee-wrap:hover .marquee-track-l { animation-play-state: paused; }
 
     /* ── Count-up ── */
     .count-target { display: inline-block; }
@@ -87,13 +93,15 @@
     /* ── Stat number ── */
     .stat-number { font-family: 'DM Serif Display', serif; }
 
-    /* ── Gradient text ── */
-    .gradient-text {
-      background: linear-gradient(135deg, var(--teal), #a78bfa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+    /* ── Scroll-reveal ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Scroll-spy nav ── */
+    .nav-link.active { color: #2E2C71; font-weight: 700; background: rgba(46,44,113,.06); border-radius: .5rem; }
+
+    /* ── Map container ── */
+    .map-container iframe { display: block; }
   </style>
 </head>
 <body class="font-sans bg-bg-light text-text-dark antialiased">
@@ -104,21 +112,28 @@
 <div class="bg-navy text-white text-sm sticky top-0 z-50 py-2 px-4">
   <div class="max-w-screen-xl mx-auto flex items-center justify-between gap-4">
     <!-- Emergency -->
-    <div class="flex items-center gap-2">
-      <svg class="w-4 h-4 text-red-400 animate-pulse flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
-      <span class="font-semibold text-red-300">Emergency Call:</span>
-      <a href="tel:0214245077" class="font-bold hover:text-gold transition-colors">021-4245077</a>
-    </div>
-    <!-- Right -->
     <div class="flex items-center gap-3">
-      <div class="hidden sm:flex items-center bg-white/10 rounded-full px-3 py-1 gap-2">
-        <svg class="w-3.5 h-3.5 text-white/60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input class="bg-transparent text-white placeholder-white/50 text-xs outline-none w-28" placeholder="Cari layanan..." />
+      <div class="flex items-center gap-2">
+        <svg class="w-4 h-4 text-red-400 animate-pulse flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
+        <span class="font-semibold text-red-300">IGD 24 Jam:</span>
+        <a href="tel:02286023290" class="font-bold hover:text-gold transition-colors">(022) 86023290</a>
       </div>
-      <button class="flex items-center gap-1.5 bg-white/15 hover:bg-white/25 rounded-full px-3 py-1 text-xs font-medium transition-colors">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        <span class="hidden sm:inline">Masuk</span>
-      </button>
+      <span class="hidden sm:inline-flex items-center gap-1 bg-green-500/20 border border-green-400/30 text-green-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">
+        <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>
+        Buka 24 Jam
+      </span>
+    </div>
+    <!-- Right: kontak singkat -->
+    <div class="hidden sm:flex items-center gap-4 text-xs text-white/60">
+      <a href="mailto:info@rsmbs.ac.id" class="flex items-center gap-1.5 hover:text-white transition-colors">
+        <svg class="w-3.5 h-3.5 text-teal flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+        info@rsmbs.ac.id
+      </a>
+      <span class="text-white/20">|</span>
+      <span class="flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5 text-teal" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+        Ciparay, Kab. Bandung
+      </span>
     </div>
   </div>
 </div>
@@ -140,19 +155,19 @@
     </a>
 
     <!-- Desktop nav -->
-    <ul class="hidden lg:flex items-center gap-1 text-sm font-medium text-text-gray">
-      <li><a href="#" class="px-3 py-2 rounded-lg hover:text-navy hover:bg-navy/5 transition-colors text-navy font-semibold">Beranda</a></li>
-      <li><a href="#about" class="px-3 py-2 rounded-lg hover:text-navy hover:bg-navy/5 transition-colors">Tentang RS</a></li>
-      <li><a href="#doctors" class="px-3 py-2 rounded-lg hover:text-navy hover:bg-navy/5 transition-colors">Dokter</a></li>
-      <li><a href="#facilities" class="px-3 py-2 rounded-lg hover:text-navy hover:bg-navy/5 transition-colors">Fasilitas</a></li>
-      <li><a href="#services" class="px-3 py-2 rounded-lg hover:text-navy hover:bg-navy/5 transition-colors">Layanan</a></li>
-      <li><a href="#news" class="px-3 py-2 rounded-lg hover:text-navy hover:bg-navy/5 transition-colors">Informasi</a></li>
-      <li><a href="#footer" class="px-3 py-2 rounded-lg hover:text-navy hover:bg-navy/5 transition-colors">Kontak</a></li>
+    <ul id="main-nav" class="hidden lg:flex items-center gap-1 text-sm font-medium text-text-gray">
+      <li><a href="#hero" data-section="hero" class="nav-link px-3 py-2 rounded-lg hover:text-navy hover:bg-navy/5 transition-colors">Beranda</a></li>
+      <li><a href="#about" data-section="about" class="nav-link px-3 py-2 rounded-lg hover:text-navy hover:bg-navy/5 transition-colors">Tentang RS</a></li>
+      <li><a href="#doctors" data-section="doctors" class="nav-link px-3 py-2 rounded-lg hover:text-navy hover:bg-navy/5 transition-colors">Dokter</a></li>
+      <li><a href="#facilities" data-section="facilities" class="nav-link px-3 py-2 rounded-lg hover:text-navy hover:bg-navy/5 transition-colors">Fasilitas</a></li>
+      <li><a href="#services" data-section="services" class="nav-link px-3 py-2 rounded-lg hover:text-navy hover:bg-navy/5 transition-colors">Layanan</a></li>
+      <li><a href="#how-to-register" data-section="how-to-register" class="nav-link px-3 py-2 rounded-lg hover:text-navy hover:bg-navy/5 transition-colors">Cara Daftar</a></li>
+      <li><a href="#location" data-section="location" class="nav-link px-3 py-2 rounded-lg hover:text-navy hover:bg-navy/5 transition-colors">Kontak</a></li>
     </ul>
 
     <!-- CTA + Hamburger -->
     <div class="flex items-center gap-3">
-      <a href="https://wa.me/6281234567890" target="_blank" class="hidden sm:inline-flex items-center gap-2 bg-teal hover:bg-teal-dark text-white text-sm font-bold px-5 py-2.5 rounded-full transition-colors shadow-md shadow-teal/30">
+      <a href="https://wa.me/62022860232900?text=Halo%20RSMBS%2C%20saya%20ingin%20mendaftar%20layanan" target="_blank" class="hidden sm:inline-flex items-center gap-2 bg-teal hover:bg-teal-dark text-white text-sm font-bold px-5 py-2.5 rounded-full transition-colors shadow-md shadow-teal/30">
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Daftar Online
       </a>
@@ -181,10 +196,15 @@
       <li><a href="#facilities" onclick="closeSidebar()" class="block px-4 py-3 rounded-xl hover:bg-navy/5 hover:text-navy transition-colors">Fasilitas</a></li>
       <li><a href="#services" onclick="closeSidebar()" class="block px-4 py-3 rounded-xl hover:bg-navy/5 hover:text-navy transition-colors">Layanan</a></li>
       <li><a href="#news" onclick="closeSidebar()" class="block px-4 py-3 rounded-xl hover:bg-navy/5 hover:text-navy transition-colors">Informasi</a></li>
-      <li><a href="#footer" onclick="closeSidebar()" class="block px-4 py-3 rounded-xl hover:bg-navy/5 hover:text-navy transition-colors">Kontak</a></li>
+      <li><a href="#location" onclick="closeSidebar()" class="block px-4 py-3 rounded-xl hover:bg-navy/5 hover:text-navy transition-colors">Kontak</a></li>
     </ul>
-    <a href="https://wa.me/6281234567890" target="_blank" class="mt-6 flex items-center justify-center gap-2 bg-teal text-white font-bold py-3 rounded-xl">
-      Daftar Online
+    <a href="tel:02286023290" class="mt-4 flex items-center justify-center gap-2 border border-navy/20 text-navy font-semibold py-3 rounded-xl text-sm">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+      (022) 86023290
+    </a>
+    <a href="https://wa.me/6281111111111?text=Halo%20RSMBS%2C%20saya%20ingin%20mendaftar%20layanan" target="_blank" class="mt-2 flex items-center justify-center gap-2 bg-teal text-white font-bold py-3 rounded-xl text-sm">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Daftar via WhatsApp
     </a>
   </nav>
 </aside>
@@ -192,7 +212,7 @@
 <!-- ════════════════════════════════════════════
      3. HERO CAROUSEL
 ═════════════════════════════════════════════ -->
-<section id="hero" class="relative w-full overflow-hidden" style="height:90vh;min-height:520px;">
+<section id="hero" class="relative w-full overflow-hidden" style="height:70vh;min-height:460px;">
   <!-- Slides -->
   <div id="carousel" class="relative w-full h-full">
 
@@ -204,11 +224,18 @@
       </div>
       <div class="relative z-10 h-full max-w-screen-xl mx-auto px-6 flex items-center">
         <div class="max-w-xl">
-          <span class="inline-block bg-teal/20 border border-teal/40 text-teal text-xs font-semibold px-4 py-1.5 rounded-full mb-4 tracking-wider uppercase">Kesehatan Islami · Terpercaya</span>
-          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl text-white leading-tight mb-5">Layanan Kesehatan<br/><em class="text-teal not-italic">Islami</em> Terpercaya</h1>
+          <div class="flex flex-wrap items-center gap-2 mb-4">
+            <span class="inline-block bg-teal/20 border border-teal/40 text-teal text-xs font-semibold px-4 py-1.5 rounded-full tracking-wider uppercase">Buka 24 Jam · #RSMBSPRIMA</span>
+            <span class="inline-flex items-center gap-1.5 bg-white/15 border border-white/30 text-white text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm">
+              <svg class="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <span class="text-yellow-300 font-bold">4.1</span>
+              <span class="text-white/70">Google (459 ulasan)</span>
+            </span>
+          </div>
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl text-white leading-tight mb-5">Layanan Kesehatan<br/><em class="text-teal not-italic">PRIMA</em> Islami</h1>
           <p class="text-white/75 text-base sm:text-lg mb-8 leading-relaxed">Kami hadir memberikan pelayanan medis profesional dengan nilai-nilai Islami untuk seluruh masyarakat Bandung Selatan dan sekitarnya.</p>
           <div class="flex flex-wrap gap-3">
-            <a href="#doctor-search" class="inline-flex items-center gap-2 bg-teal hover:bg-teal-dark text-white font-bold px-6 py-3.5 rounded-full transition-all shadow-lg shadow-teal/40 hover:shadow-xl hover:shadow-teal/30">
+            <a href="#doctors" class="inline-flex items-center gap-2 bg-teal hover:bg-teal-dark text-white font-bold px-6 py-3.5 rounded-full transition-all shadow-lg shadow-teal/40 hover:shadow-xl hover:shadow-teal/30">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
               Cari Dokter
             </a>
@@ -259,7 +286,7 @@
             <a href="#doctors" class="inline-flex items-center gap-2 bg-teal hover:bg-teal-dark text-white font-bold px-6 py-3.5 rounded-full transition-all shadow-lg shadow-teal/40">
               Jadwal Dokter
             </a>
-            <a href="#doctor-search" class="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 text-white font-semibold px-6 py-3.5 rounded-full border border-white/30 transition-all">
+            <a href="#doctors" class="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 text-white font-semibold px-6 py-3.5 rounded-full border border-white/30 transition-all">
               Cari Spesialis
             </a>
           </div>
@@ -329,90 +356,62 @@
 </section>
 
 <!-- ════════════════════════════════════════════
-     5. SEARCH DOKTER
+     5. DOKTER SPESIALIS
 ═════════════════════════════════════════════ -->
-<section id="doctor-search" class="py-20 px-4" style="background: linear-gradient(135deg, #ffffff 0%, #EEF2FF 100%);">
+<section id="doctors" class="py-20 px-4" style="background: linear-gradient(135deg, #ffffff 0%, #EEF2FF 100%);">
   <div class="max-w-screen-xl mx-auto">
-    <div class="flex flex-col lg:flex-row items-center gap-10">
-      <!-- Stat Badge -->
-      <div class="flex-shrink-0 bg-navy rounded-3xl px-10 py-8 text-center shadow-2xl shadow-navy/30">
-        <div class="stat-number text-6xl sm:text-7xl font-bold text-teal leading-none">141</div>
-        <div class="text-white font-bold text-lg mt-1">DOKTER</div>
-        <div class="text-white/60 text-sm mt-1">Spesialis &amp; Subspesialis</div>
-      </div>
-      <!-- Form -->
-      <div class="flex-1 w-full">
-        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-text-dark mb-3">Cari Dokter <em class="text-navy not-italic">Spesialismu</em></h2>
-        <p class="text-text-gray mb-8 text-lg">141 dokter spesialis siap melayani Anda dengan sepenuh hati</p>
-        <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-          <div class="flex flex-col sm:flex-row gap-3">
-            <select id="spec-select" class="flex-1 px-4 py-3.5 rounded-xl border border-gray-200 text-text-dark bg-white focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal text-sm font-medium">
-              <option value="">-- Pilih Spesialisasi --</option>
-              <option>Dokter Umum</option><option>Penyakit Dalam</option><option>Bedah Umum</option>
-              <option>Bedah Saraf</option><option>Anak (Pediatri)</option><option>Kandungan (Obs-Gyn)</option>
-              <option>Jantung &amp; Pembuluh Darah</option><option>Paru &amp; Pernapasan</option>
-              <option>Saraf (Neurologi)</option><option>Ortopedi</option><option>Mata</option>
-              <option>THT</option><option>Kulit &amp; Kelamin</option><option>Psikiatri</option>
-              <option>Gigi &amp; Mulut</option><option>Radiologi</option><option>Anestesi</option>
-              <option>Rehabilitasi Medik</option>
-            </select>
-            <input id="doc-name-input" type="text" placeholder="Nama dokter..." class="flex-1 px-4 py-3.5 rounded-xl border border-gray-200 text-text-dark focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal text-sm font-medium" />
-            <button onclick="searchDoctor()" class="bg-navy hover:bg-navy-dark text-white font-bold px-8 py-3.5 rounded-xl transition-colors flex items-center gap-2 whitespace-nowrap shadow-md shadow-navy/30">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-              Cari Sekarang
-            </button>
-          </div>
-        </div>
-        <div class="mt-4 text-center sm:text-left">
-          <a href="#doctors" class="inline-flex items-center gap-1.5 text-teal font-semibold hover:underline text-sm">
-            Lihat Jadwal Dokter Terupdate
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M9 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════
-     6. STATISTIK
-═════════════════════════════════════════════ -->
-<section id="stats" class="bg-navy py-16 px-4 overflow-hidden" style="background: linear-gradient(135deg,#2E2C71,#1a1854);">
-  <div class="max-w-screen-xl mx-auto">
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-      <div class="p-4">
-        <div class="stat-number text-5xl sm:text-6xl font-bold text-teal"><span class="count-target" data-target="141">0</span></div>
-        <div class="text-white font-semibold text-lg mt-2">Dokter</div>
-        <div class="text-white/50 text-sm">Spesialis &amp; Subspesialis</div>
-      </div>
-      <div class="p-4">
-        <div class="stat-number text-5xl sm:text-6xl font-bold text-gold"><span class="count-target" data-target="30">0</span><span class="text-gold">+</span></div>
-        <div class="text-white font-semibold text-lg mt-2">Tahun</div>
-        <div class="text-white/50 text-sm">Pengalaman Melayani</div>
-      </div>
-      <div class="p-4">
-        <div class="stat-number text-5xl sm:text-6xl font-bold text-teal"><span class="count-target" data-target="200">0</span><span class="text-teal">+</span></div>
-        <div class="text-white font-semibold text-lg mt-2">Tempat Tidur</div>
-        <div class="text-white/50 text-sm">Kapasitas Rawat Inap</div>
-      </div>
-      <div class="p-4">
-        <div class="stat-number text-5xl sm:text-6xl font-bold text-gold"><span class="count-target" data-target="40">0</span><span class="text-gold">+</span></div>
-        <div class="text-white font-semibold text-lg mt-2">Spesialisasi</div>
-        <div class="text-white/50 text-sm">Bidang Keahlian</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════
-     7. DOKTER SPESIALIS
-═════════════════════════════════════════════ -->
-<section id="doctors" class="py-20 px-4 bg-bg-light">
-  <div class="max-w-screen-xl mx-auto">
+    <!-- Header -->
     <div class="text-center mb-10">
       <span class="text-teal text-sm font-semibold uppercase tracking-widest">Tim Medis</span>
       <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-text-dark mt-2">Dokter Spesialis &amp; Subspesialis</h2>
-      <p class="text-text-gray mt-3 max-w-xl mx-auto">Dokter berpengalaman dengan kualifikasi terbaik siap memberikan pelayanan medis prima</p>
+      <p class="text-text-gray mt-3 max-w-xl mx-auto">141 dokter berpengalaman dengan kualifikasi terbaik siap memberikan pelayanan medis prima</p>
+    </div>
+
+    <!-- Stats Strip -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-10 rounded-2xl px-6 py-8 text-center overflow-hidden" style="background: linear-gradient(135deg,#2E2C71,#1a1854);">
+      <div class="p-2">
+        <div class="stat-number text-4xl sm:text-5xl font-bold text-teal"><span class="count-target" data-target="141">0</span></div>
+        <div class="text-white font-semibold text-base mt-1">Dokter</div>
+        <div class="text-white/50 text-sm">Spesialis &amp; Subspesialis</div>
+      </div>
+      <div class="p-2">
+        <div class="stat-number text-4xl sm:text-5xl font-bold text-gold"><span class="count-target" data-target="30">0</span><span class="text-gold">+</span></div>
+        <div class="text-white font-semibold text-base mt-1">Tahun</div>
+        <div class="text-white/50 text-sm">Pengalaman Melayani</div>
+      </div>
+      <div class="p-2">
+        <div class="stat-number text-4xl sm:text-5xl font-bold text-teal"><span class="count-target" data-target="200">0</span><span class="text-teal">+</span></div>
+        <div class="text-white font-semibold text-base mt-1">Tempat Tidur</div>
+        <div class="text-white/50 text-sm">Kapasitas Rawat Inap</div>
+      </div>
+      <div class="p-2">
+        <div class="stat-number text-4xl sm:text-5xl font-bold text-gold"><span class="count-target" data-target="40">0</span><span class="text-gold">+</span></div>
+        <div class="text-white font-semibold text-base mt-1">Spesialisasi</div>
+        <div class="text-white/50 text-sm">Bidang Keahlian</div>
+      </div>
+    </div>
+
+    <!-- Search Form -->
+    <div class="max-w-3xl mx-auto mb-10">
+      <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+        <div class="flex flex-col sm:flex-row gap-3">
+          <select id="spec-select" class="flex-1 px-4 py-3.5 rounded-xl border border-gray-200 text-text-dark bg-white focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal text-sm font-medium">
+            <option value="">-- Pilih Spesialisasi --</option>
+            <option>Dokter Umum</option><option>Penyakit Dalam</option><option>Bedah Umum</option>
+            <option>Bedah Saraf</option><option>Anak (Pediatri)</option><option>Kandungan (Obs-Gyn)</option>
+            <option>Jantung &amp; Pembuluh Darah</option><option>Paru &amp; Pernapasan</option>
+            <option>Saraf (Neurologi)</option><option>Ortopedi</option><option>Mata</option>
+            <option>THT</option><option>Kulit &amp; Kelamin</option><option>Psikiatri</option>
+            <option>Gigi &amp; Mulut</option><option>Radiologi</option><option>Anestesi</option>
+            <option>Rehabilitasi Medik</option>
+          </select>
+          <input id="doc-name-input" type="text" placeholder="Nama dokter..." class="flex-1 px-4 py-3.5 rounded-xl border border-gray-200 text-text-dark focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal text-sm font-medium" />
+          <button onclick="searchDoctor()" class="bg-navy hover:bg-navy-dark text-white font-bold px-8 py-3.5 rounded-xl transition-colors flex items-center gap-2 whitespace-nowrap shadow-md shadow-navy/30">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            Cari Sekarang
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- Tab Filter -->
@@ -433,10 +432,10 @@
     </div>
 
     <div class="text-center mt-10">
-      <a href="#" class="inline-flex items-center gap-2 border-2 border-navy text-navy hover:bg-navy hover:text-white font-bold px-8 py-3 rounded-full transition-all">
+      <button disabled class="inline-flex items-center gap-2 border-2 border-gray-200 text-text-gray font-bold px-8 py-3 rounded-full cursor-not-allowed opacity-60" title="Halaman ini sedang dalam pengembangan">
         Lihat Semua Dokter
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M9 5l7 7-7 7"/></svg>
-      </a>
+        <span class="text-xs font-normal bg-gray-100 px-2 py-0.5 rounded-full">Segera Hadir</span>
+      </button>
     </div>
   </div>
 </section>
@@ -451,9 +450,9 @@
         <span class="text-teal text-sm font-semibold uppercase tracking-widest">Penawaran Terbaik</span>
         <h2 class="font-display text-3xl sm:text-4xl text-text-dark mt-1">Promo &amp; Program Layanan</h2>
       </div>
-      <a href="#" class="flex-shrink-0 inline-flex items-center gap-1.5 text-navy font-semibold hover:text-teal transition-colors text-sm">
-        Lihat Semua Promo <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M9 5l7 7-7 7"/></svg>
-      </a>
+      <span class="flex-shrink-0 inline-flex items-center gap-1.5 text-text-gray text-sm opacity-50" title="Halaman ini sedang dalam pengembangan">
+        Lihat Semua Promo <span class="text-xs bg-gray-100 px-2 py-0.5 rounded-full">Segera</span>
+      </span>
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <!-- Promo 1 -->
@@ -463,10 +462,10 @@
           <span class="absolute top-3 left-3 bg-gold text-white text-xs font-bold px-3 py-1 rounded-full">PROMO</span>
         </div>
         <div class="p-5">
-          <div class="text-xs text-text-gray mb-2">Berakhir: 31 Maret 2025</div>
+          <div class="text-xs text-text-gray mb-2">Berakhir: 31 Maret 2026</div>
           <h3 class="font-bold text-text-dark text-base mb-2 leading-snug">Paket MCU Executive – Lengkap &amp; Terjangkau</h3>
           <p class="text-text-gray text-sm mb-4 leading-relaxed">Meliputi lab darah lengkap, EKG, foto thorax, USG abdomen, dan konsultasi dokter.</p>
-          <a href="#" class="inline-flex items-center gap-1 text-teal font-semibold text-sm hover:underline">Selengkapnya →</a>
+          <span class="inline-flex items-center gap-1 text-text-gray text-sm opacity-50">Segera Hadir →</span>
         </div>
       </article>
       <!-- Promo 2 -->
@@ -476,10 +475,10 @@
           <span class="absolute top-3 left-3 bg-teal text-white text-xs font-bold px-3 py-1 rounded-full">PROMO</span>
         </div>
         <div class="p-5">
-          <div class="text-xs text-text-gray mb-2">Berakhir: 28 Feb 2025</div>
+          <div class="text-xs text-text-gray mb-2">Berakhir: 28 Jun 2026</div>
           <h3 class="font-bold text-text-dark text-base mb-2 leading-snug">Vaksinasi Influenza &amp; HPV – Diskon 15%</h3>
           <p class="text-text-gray text-sm mb-4 leading-relaxed">Lindungi keluarga dengan vaksin berkualitas. Tersedia untuk seluruh kelompok usia.</p>
-          <a href="#" class="inline-flex items-center gap-1 text-teal font-semibold text-sm hover:underline">Selengkapnya →</a>
+          <span class="inline-flex items-center gap-1 text-text-gray text-sm opacity-50">Segera Hadir →</span>
         </div>
       </article>
       <!-- Promo 3 -->
@@ -489,10 +488,10 @@
           <span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">PROMO</span>
         </div>
         <div class="p-5">
-          <div class="text-xs text-text-gray mb-2">Berakhir: 15 Apr 2025</div>
+          <div class="text-xs text-text-gray mb-2">Berakhir: 30 Apr 2026</div>
           <h3 class="font-bold text-text-dark text-base mb-2 leading-snug">Perawatan Gigi Gratis Konsultasi Pertama</h3>
           <p class="text-text-gray text-sm mb-4 leading-relaxed">Konsultasi pertama gratis bersama dokter gigi spesialis kami. Berlaku untuk pasien baru.</p>
-          <a href="#" class="inline-flex items-center gap-1 text-teal font-semibold text-sm hover:underline">Selengkapnya →</a>
+          <span class="inline-flex items-center gap-1 text-text-gray text-sm opacity-50">Segera Hadir →</span>
         </div>
       </article>
     </div>
@@ -637,10 +636,10 @@
         <div class="p-5">
           <h3 class="font-bold text-text-dark text-lg mb-3">Paviliun / Suite</h3>
           <ul class="text-sm text-text-gray space-y-1.5">
-            <li class="flex items-center gap-2"><span class="w-4 h-4 bg-navy/10 text-navy rounded-full flex items-center justify-center text-xs">✓</span>Ruang tamu terpisah</li>
-            <li class="flex items-center gap-2"><span class="w-4 h-4 bg-navy/10 text-navy rounded-full flex items-center justify-center text-xs">✓</span>2 kamar mandi, dapur kecil</li>
-            <li class="flex items-center gap-2"><span class="w-4 h-4 bg-navy/10 text-navy rounded-full flex items-center justify-center text-xs">✓</span>Fasilitas hotel bintang 4</li>
-            <li class="flex items-center gap-2"><span class="w-4 h-4 bg-navy/10 text-navy rounded-full flex items-center justify-center text-xs">✓</span>Butler khusus, WiFi premium</li>
+            <li class="flex items-center gap-2"><span class="w-4 h-4 bg-navy/10 text-navy rounded-full flex items-center justify-center text-xs">✓</span>1 pasien, ruang terpisah &amp; privat</li>
+            <li class="flex items-center gap-2"><span class="w-4 h-4 bg-navy/10 text-navy rounded-full flex items-center justify-center text-xs">✓</span>AC, Smart TV, kamar mandi dalam</li>
+            <li class="flex items-center gap-2"><span class="w-4 h-4 bg-navy/10 text-navy rounded-full flex items-center justify-center text-xs">✓</span>Ruang duduk untuk keluarga</li>
+            <li class="flex items-center gap-2"><span class="w-4 h-4 bg-navy/10 text-navy rounded-full flex items-center justify-center text-xs">✓</span>WiFi, kulkas kecil, layanan kamar</li>
           </ul>
           <button class="mt-5 w-full py-2.5 border-2 border-navy text-navy font-semibold rounded-xl hover:bg-navy hover:text-white transition-colors text-sm">Info Kamar</button>
         </div>
@@ -659,9 +658,9 @@
         <span class="text-teal text-sm font-semibold uppercase tracking-widest">Terkini</span>
         <h2 class="font-display text-3xl sm:text-4xl text-text-dark mt-1">Informasi Terbaru</h2>
       </div>
-      <a href="#" class="flex-shrink-0 inline-flex items-center gap-1.5 text-navy font-semibold hover:text-teal transition-colors text-sm">
-        Lihat Semua <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M9 5l7 7-7 7"/></svg>
-      </a>
+      <span class="flex-shrink-0 inline-flex items-center gap-1.5 text-text-gray text-sm opacity-50" title="Halaman ini sedang dalam pengembangan">
+        Lihat Semua <span class="text-xs bg-gray-100 px-2 py-0.5 rounded-full">Segera</span>
+      </span>
     </div>
     <div class="grid lg:grid-cols-3 gap-6">
       <!-- Featured Article -->
@@ -671,10 +670,10 @@
           <span class="absolute top-4 left-4 bg-navy text-white text-xs font-bold px-3 py-1.5 rounded-full">Kesehatan</span>
         </div>
         <div class="p-6 flex-1 flex flex-col">
-          <div class="text-xs text-text-gray mb-3">24 Januari 2025</div>
+          <div class="text-xs text-text-gray mb-3">24 Januari 2026</div>
           <h3 class="font-bold text-text-dark text-xl leading-tight mb-3">Pentingnya Skrining Kesehatan Rutin: Deteksi Dini Selamatkan Nyawa</h3>
           <p class="text-text-gray text-sm leading-relaxed flex-1">Pemeriksaan kesehatan rutin bukan hanya untuk yang sakit. Skrining dini memungkinkan deteksi penyakit kronis seperti diabetes, hipertensi, dan kanker pada stadium awal ketika pengobatan masih efektif...</p>
-          <a href="#" class="mt-5 inline-flex items-center gap-1.5 text-teal font-semibold text-sm hover:underline">Baca Selengkapnya →</a>
+          <span class="mt-5 inline-flex items-center gap-1.5 text-text-gray text-sm opacity-50">Segera Hadir →</span>
         </div>
       </article>
       <!-- Small Articles -->
@@ -684,7 +683,7 @@
           <div class="flex flex-col justify-between py-1 min-w-0">
             <span class="bg-teal/10 text-teal text-xs font-semibold px-2 py-0.5 rounded-full self-start">Promo</span>
             <h4 class="font-bold text-text-dark text-sm leading-snug mt-1 line-clamp-2">Diskon 20% MCU untuk Pasien Baru Bulan Ini</h4>
-            <span class="text-text-gray text-xs mt-1">20 Jan 2025</span>
+            <span class="text-text-gray text-xs mt-1">20 Jan 2026</span>
           </div>
         </article>
         <article class="hover-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 flex gap-4 p-3">
@@ -692,7 +691,7 @@
           <div class="flex flex-col justify-between py-1 min-w-0">
             <span class="bg-red-50 text-red-500 text-xs font-semibold px-2 py-0.5 rounded-full self-start">Info RS</span>
             <h4 class="font-bold text-text-dark text-sm leading-snug mt-1 line-clamp-2">Penambahan Poli Geriatri untuk Pasien Lansia</h4>
-            <span class="text-text-gray text-xs mt-1">15 Jan 2025</span>
+            <span class="text-text-gray text-xs mt-1">15 Jan 2026</span>
           </div>
         </article>
         <article class="hover-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 flex gap-4 p-3">
@@ -700,9 +699,298 @@
           <div class="flex flex-col justify-between py-1 min-w-0">
             <span class="bg-purple-50 text-purple-600 text-xs font-semibold px-2 py-0.5 rounded-full self-start">Edukasi</span>
             <h4 class="font-bold text-text-dark text-sm leading-snug mt-1 line-clamp-2">7 Kebiasaan Sehat yang Meningkatkan Imunitas Tubuh</h4>
-            <span class="text-text-gray text-xs mt-1">10 Jan 2025</span>
+            <span class="text-text-gray text-xs mt-1">10 Jan 2026</span>
           </div>
         </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     11B. GOOGLE REVIEWS / TESTIMONIAL
+═════════════════════════════════════════════ -->
+<section id="reviews" class="py-20 px-4 bg-bg-light">
+  <div class="max-w-screen-xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <span class="text-teal text-sm font-semibold uppercase tracking-widest">Ulasan Pasien</span>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-text-dark mt-2">Apa Kata Mereka?</h2>
+      <p class="text-text-gray mt-3 max-w-xl mx-auto">Kepercayaan pasien adalah motivasi kami untuk terus memberikan pelayanan terbaik</p>
+      <!-- Google Rating Badge -->
+      <div class="inline-flex items-center gap-4 bg-white rounded-2xl px-6 py-4 shadow-lg border border-gray-100 mt-8">
+        <div class="flex flex-col items-center">
+          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          <span class="text-xs text-text-gray font-medium mt-1">Google</span>
+        </div>
+        <div class="border-l border-gray-200 pl-4">
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-text-dark text-3xl leading-none">4.1</span>
+            <div class="flex flex-col">
+              <div class="flex gap-0.5">
+                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <span class="text-text-gray text-xs mt-0.5">459 ulasan Google</span>
+            </div>
+          </div>
+        </div>
+        <a href="https://www.google.com/maps/place/Rumah+Sakit+Muhammadiyah+Bandung+Selatan" target="_blank" rel="noopener" class="border border-teal text-teal hover:bg-teal hover:text-white text-xs font-bold px-4 py-2 rounded-full transition-colors whitespace-nowrap">
+          Tulis Ulasan
+        </a>
+      </div>
+    </div>
+
+    <!-- Review Cards -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Review 1 -->
+      <div class="hover-card bg-white rounded-2xl p-6 shadow-md border border-gray-100 flex flex-col gap-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-pink-400 to-red-500 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">N</div>
+            <div>
+              <div class="font-bold text-text-dark text-sm">Nelly Yulianti</div>
+              <div class="text-text-gray text-xs">Pasien Rawat Inap</div>
+            </div>
+          </div>
+          <svg class="w-6 h-6 opacity-20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+        <div class="flex gap-0.5">
+          <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="text-text-gray text-sm leading-relaxed flex-1">"Luar biasa dari pelayanan dokter anaknya, suster, dan cateringnya puas sekali."</p>
+        <div class="flex items-center gap-1 text-xs text-text-gray pt-2 border-t border-gray-100">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          Ulasan via Google Maps
+        </div>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="hover-card bg-white rounded-2xl p-6 shadow-md border border-gray-100 flex flex-col gap-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">S</div>
+            <div>
+              <div class="font-bold text-text-dark text-sm">Sandi Sandi</div>
+              <div class="text-text-gray text-xs">Keluarga Pasien IGD</div>
+            </div>
+          </div>
+          <svg class="w-6 h-6 opacity-20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+        <div class="flex gap-0.5">
+          <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="text-text-gray text-sm leading-relaxed flex-1">"Kami keluarga pasien yang pernah dirawat dan diobservasi di IGD. Pelayanannya cepat dan profesional."</p>
+        <div class="flex items-center gap-1 text-xs text-text-gray pt-2 border-t border-gray-100">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          Ulasan via Google Maps
+        </div>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="hover-card bg-white rounded-2xl p-6 shadow-md border border-gray-100 flex flex-col gap-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-teal-400 to-green-500 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">A</div>
+            <div>
+              <div class="font-bold text-text-dark text-sm">Annisa Fhajrin</div>
+              <div class="text-text-gray text-xs">Pasien Poli Gigi</div>
+            </div>
+          </div>
+          <svg class="w-6 h-6 opacity-20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+        <div class="flex gap-0.5">
+          <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="text-text-gray text-sm leading-relaxed flex-1">"Fasilitas poli gigi lengkap ditambah dokternya sangat profesional. Sangat direkomendasikan!"</p>
+        <div class="flex items-center gap-1 text-xs text-text-gray pt-2 border-t border-gray-100">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          Ulasan via Google Maps
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Lihat semua ulasan -->
+    <div class="text-center mt-10">
+      <a href="https://www.google.com/maps/place/Rumah+Sakit+Muhammadiyah+Bandung+Selatan" target="_blank" rel="noopener" class="inline-flex items-center gap-2 border-2 border-navy text-navy hover:bg-navy hover:text-white font-bold px-8 py-3 rounded-full transition-all">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="currentColor"/></svg>
+        Lihat Semua Ulasan di Google
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     11C. LOKASI & PETA
+═════════════════════════════════════════════ -->
+<section id="location" class="py-20 px-4 bg-white">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <!-- Info Kontak -->
+      <div>
+        <span class="text-teal text-sm font-semibold uppercase tracking-widest">Temukan Kami</span>
+        <h2 class="font-display text-3xl sm:text-4xl text-text-dark mt-2 mb-6">Lokasi &amp; Kontak</h2>
+
+        <div class="space-y-4">
+          <!-- Alamat -->
+          <div class="flex items-start gap-4 bg-bg-light rounded-2xl p-4 border border-gray-100">
+            <div class="w-10 h-10 bg-teal/10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-teal" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+            </div>
+            <div>
+              <div class="font-semibold text-text-dark text-sm mb-1">Alamat</div>
+              <p class="text-text-gray text-sm leading-relaxed">Jl. Raya Laswi, Ciheulang, Kec. Ciparay,<br/>Kabupaten Bandung, Jawa Barat 40375</p>
+              <a href="https://www.google.com/maps/place/Rumah+Sakit+Muhammadiyah+Bandung+Selatan" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-teal text-xs font-semibold mt-2 hover:underline">
+                Buka di Google Maps
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Telepon -->
+          <div class="flex items-center gap-4 bg-bg-light rounded-2xl p-4 border border-gray-100">
+            <div class="w-10 h-10 bg-navy/10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-navy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+            </div>
+            <div>
+              <div class="font-semibold text-text-dark text-sm mb-0.5">Telepon</div>
+              <a href="tel:02286023290" class="text-navy font-bold text-base hover:text-teal transition-colors">(022) 86023290</a>
+            </div>
+          </div>
+
+          <!-- Jam Buka -->
+          <div class="flex items-start gap-4 bg-bg-light rounded-2xl p-4 border border-gray-100">
+            <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <div class="font-semibold text-text-dark text-sm mb-2">Jam Operasional</div>
+              <div class="space-y-1 text-sm text-text-gray">
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                  <span class="font-bold text-green-700">Buka 24 Jam, 7 Hari</span>
+                </div>
+                <div class="text-xs text-text-gray mt-1">Termasuk IGD, Rawat Inap, dan layanan darurat</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sosmed -->
+          <div class="flex gap-3 pt-2">
+            <a href="https://www.facebook.com/rsmbsofficial/" target="_blank" rel="noopener" class="flex items-center gap-2 bg-blue-50 hover:bg-blue-600 text-blue-600 hover:text-white border border-blue-200 rounded-xl px-4 py-2.5 transition-colors text-sm font-semibold">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              @rsmbsofficial
+            </a>
+            <a href="https://www.instagram.com/rsmbsofficial/" target="_blank" rel="noopener" class="flex items-center gap-2 bg-pink-50 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-500 text-pink-600 hover:text-white border border-pink-200 rounded-xl px-4 py-2.5 transition-all text-sm font-semibold">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              @rsmbsofficial
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Google Maps Embed -->
+      <div class="rounded-2xl overflow-hidden shadow-xl border border-gray-200 h-96 lg:h-full min-h-80">
+        <iframe
+          src="https://maps.google.com/maps?q=Rumah+Sakit+Muhammadiyah+Bandung+Selatan+Ciparay&output=embed&z=15"
+          width="100%"
+          height="100%"
+          style="border:0;min-height:320px;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Lokasi RSMBS di Google Maps"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     11D. ALUR PENDAFTARAN
+═════════════════════════════════════════════ -->
+<section id="how-to-register" class="py-20 px-4 bg-white">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="text-teal text-sm font-semibold uppercase tracking-widest">Mudah &amp; Cepat</span>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-text-dark mt-2">Cara Daftar Rawat Jalan</h2>
+      <p class="text-text-gray mt-3 max-w-xl mx-auto">Tersedia untuk pasien BPJS Kesehatan, Umum, dan Asuransi Swasta</p>
+    </div>
+
+    <!-- Steps -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+      <!-- Connector line (desktop only) -->
+      <div class="hidden lg:block absolute top-10 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-teal/30 via-teal to-teal/30 z-0"></div>
+
+      <!-- Step 1 -->
+      <div class="relative z-10 bg-bg-light rounded-2xl p-6 text-center border border-gray-100 shadow-sm hover-card">
+        <div class="w-16 h-16 bg-teal rounded-2xl mx-auto mb-4 flex items-center justify-center shadow-lg shadow-teal/30">
+          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 8.25h3m-3 3.75h3m-6-7.5H9m-1.5 3.75H9m-1.5 3.75H9"/></svg>
+        </div>
+        <div class="w-7 h-7 bg-navy text-white text-sm font-bold rounded-full flex items-center justify-center mx-auto mb-3">1</div>
+        <h3 class="font-bold text-text-dark mb-2">Siapkan Dokumen</h3>
+        <p class="text-text-gray text-sm leading-relaxed">KTP / Kartu Keluarga, Kartu BPJS (jika ada), dan Surat Rujukan dari Faskes 1 untuk pasien BPJS.</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="relative z-10 bg-bg-light rounded-2xl p-6 text-center border border-gray-100 shadow-sm hover-card">
+        <div class="w-16 h-16 bg-navy rounded-2xl mx-auto mb-4 flex items-center justify-center shadow-lg shadow-navy/30">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div class="w-7 h-7 bg-navy text-white text-sm font-bold rounded-full flex items-center justify-center mx-auto mb-3">2</div>
+        <h3 class="font-bold text-text-dark mb-2">Daftar via WhatsApp</h3>
+        <p class="text-text-gray text-sm leading-relaxed">Kirim pesan ke nomor WhatsApp kami. Sebutkan nama, tanggal lahir, keluhan, dan poli yang dituju.</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="relative z-10 bg-bg-light rounded-2xl p-6 text-center border border-gray-100 shadow-sm hover-card">
+        <div class="w-16 h-16 bg-teal rounded-2xl mx-auto mb-4 flex items-center justify-center shadow-lg shadow-teal/30">
+          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+        </div>
+        <div class="w-7 h-7 bg-navy text-white text-sm font-bold rounded-full flex items-center justify-center mx-auto mb-3">3</div>
+        <h3 class="font-bold text-text-dark mb-2">Konfirmasi Jadwal</h3>
+        <p class="text-text-gray text-sm leading-relaxed">Tim kami akan mengkonfirmasi jadwal dokter dan nomor antrian. Pendaftaran Senin–Sabtu 07.00–20.00 WIB.</p>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="relative z-10 bg-bg-light rounded-2xl p-6 text-center border border-gray-100 shadow-sm hover-card">
+        <div class="w-16 h-16 bg-navy rounded-2xl mx-auto mb-4 flex items-center justify-center shadow-lg shadow-navy/30">
+          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+        </div>
+        <div class="w-7 h-7 bg-navy text-white text-sm font-bold rounded-full flex items-center justify-center mx-auto mb-3">4</div>
+        <h3 class="font-bold text-text-dark mb-2">Datang &amp; Berobat</h3>
+        <p class="text-text-gray text-sm leading-relaxed">Datang sesuai jadwal, tunjukkan dokumen di loket pendaftaran, dan tunggu giliran konsultasi dokter.</p>
+      </div>
+    </div>
+
+    <!-- Info BPJS -->
+    <div class="mt-10 bg-blue-50 border border-blue-200 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+      <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"/></svg>
+      </div>
+      <div>
+        <p class="font-semibold text-blue-800 text-sm">Khusus Pasien BPJS Kesehatan</p>
+        <p class="text-blue-700 text-sm mt-0.5">Wajib membawa: Kartu BPJS aktif + Surat Rujukan dari Faskes 1 (Puskesmas/Klinik) + KTP/KK. Pastikan surat rujukan masih berlaku dan sesuai poli yang dituju.</p>
       </div>
     </div>
   </div>
@@ -740,49 +1028,37 @@
       <!-- Row 1: left -->
       <div class="overflow-hidden">
         <div class="marquee-track-l flex gap-8 whitespace-nowrap" style="width:max-content;">
-          <div class="flex gap-8">
-            <!-- Logos placeholder -->
-            <div class="flex-shrink-0 h-12 w-32 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">BPJS Kesehatan</div>
+          <div class="flex gap-6">
+            <div class="flex-shrink-0 h-12 w-36 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">BPJS Kesehatan</div>
             <div class="flex-shrink-0 h-12 w-32 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">Prudential</div>
-            <div class="flex-shrink-0 h-12 w-32 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">AIA</div>
-            <div class="flex-shrink-0 h-12 w-32 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">Allianz</div>
+            <div class="flex-shrink-0 h-12 w-28 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">AIA</div>
+            <div class="flex-shrink-0 h-12 w-28 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">Allianz</div>
             <div class="flex-shrink-0 h-12 w-32 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">Manulife</div>
             <div class="flex-shrink-0 h-12 w-32 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">AXA Mandiri</div>
-            <div class="flex-shrink-0 h-12 w-32 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">Lippo Insurance</div>
-            <div class="flex-shrink-0 h-12 w-32 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">Inhealth</div>
+            <div class="flex-shrink-0 h-12 w-36 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">Lippo Insurance</div>
+            <div class="flex-shrink-0 h-12 w-28 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">Inhealth</div>
+            <div class="flex-shrink-0 h-12 w-32 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">Jasa Raharja</div>
+            <div class="flex-shrink-0 h-12 w-28 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">PLN Persero</div>
+            <div class="flex-shrink-0 h-12 w-36 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">Telkom Indonesia</div>
+            <div class="flex-shrink-0 h-12 w-32 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">Bank BJB</div>
+            <div class="flex-shrink-0 h-12 w-28 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">Bank BRI</div>
+            <div class="flex-shrink-0 h-12 w-28 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">Pelindo</div>
           </div>
-          <div class="flex gap-8" aria-hidden="true">
-            <div class="flex-shrink-0 h-12 w-32 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">BPJS Kesehatan</div>
+          <div class="flex gap-6" aria-hidden="true">
+            <div class="flex-shrink-0 h-12 w-36 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">BPJS Kesehatan</div>
             <div class="flex-shrink-0 h-12 w-32 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">Prudential</div>
-            <div class="flex-shrink-0 h-12 w-32 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">AIA</div>
-            <div class="flex-shrink-0 h-12 w-32 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">Allianz</div>
+            <div class="flex-shrink-0 h-12 w-28 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">AIA</div>
+            <div class="flex-shrink-0 h-12 w-28 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">Allianz</div>
             <div class="flex-shrink-0 h-12 w-32 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">Manulife</div>
             <div class="flex-shrink-0 h-12 w-32 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">AXA Mandiri</div>
-            <div class="flex-shrink-0 h-12 w-32 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">Lippo Insurance</div>
-            <div class="flex-shrink-0 h-12 w-32 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">Inhealth</div>
-          </div>
-        </div>
-      </div>
-      <!-- Row 2: right -->
-      <div class="overflow-hidden">
-        <div class="marquee-track-r flex gap-8 whitespace-nowrap" style="width:max-content;">
-          <div class="flex gap-8">
-            <div class="flex-shrink-0 h-12 w-36 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">Jasa Raharja</div>
-            <div class="flex-shrink-0 h-12 w-36 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">PLN Persero</div>
+            <div class="flex-shrink-0 h-12 w-36 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">Lippo Insurance</div>
+            <div class="flex-shrink-0 h-12 w-28 bg-gray-100 rounded-xl flex items-center justify-center text-xs font-bold text-text-gray">Inhealth</div>
+            <div class="flex-shrink-0 h-12 w-32 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">Jasa Raharja</div>
+            <div class="flex-shrink-0 h-12 w-28 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">PLN Persero</div>
             <div class="flex-shrink-0 h-12 w-36 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">Telkom Indonesia</div>
-            <div class="flex-shrink-0 h-12 w-36 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">Pos Indonesia</div>
-            <div class="flex-shrink-0 h-12 w-36 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">Bank BJB</div>
-            <div class="flex-shrink-0 h-12 w-36 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">Bank BRI</div>
-            <div class="flex-shrink-0 h-12 w-36 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">Pelindo</div>
-          </div>
-          <div class="flex gap-8" aria-hidden="true">
-            <div class="flex-shrink-0 h-12 w-36 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">Jasa Raharja</div>
-            <div class="flex-shrink-0 h-12 w-36 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">PLN Persero</div>
-            <div class="flex-shrink-0 h-12 w-36 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">Telkom Indonesia</div>
-            <div class="flex-shrink-0 h-12 w-36 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">Pos Indonesia</div>
-            <div class="flex-shrink-0 h-12 w-36 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">Bank BJB</div>
-            <div class="flex-shrink-0 h-12 w-36 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">Bank BRI</div>
-            <div class="flex-shrink-0 h-12 w-36 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">Pelindo</div>
+            <div class="flex-shrink-0 h-12 w-32 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">Bank BJB</div>
+            <div class="flex-shrink-0 h-12 w-28 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">Bank BRI</div>
+            <div class="flex-shrink-0 h-12 w-28 bg-navy/5 rounded-xl flex items-center justify-center text-xs font-bold text-navy">Pelindo</div>
           </div>
         </div>
       </div>
@@ -791,55 +1067,117 @@
 </section>
 
 <!-- ════════════════════════════════════════════
-     14. AKREDITASI
+     14. TENTANG RS + VISI MISI + AKREDITASI
 ═════════════════════════════════════════════ -->
-<section id="about" class="py-16 px-4 bg-bg-light">
-  <div class="max-w-screen-xl mx-auto text-center">
-    <h3 class="font-bold text-text-dark text-lg mb-2">Terakreditasi LARSI Paripurna</h3>
-    <p class="text-text-gray text-sm mb-8 max-w-md mx-auto">No. LARSI/SERTIFIKAT/096/02/2023</p>
-    <div class="flex flex-wrap justify-center items-center gap-6">
-      <!-- Badge 1 -->
-      <div class="flex flex-col items-center gap-3 bg-white rounded-2xl p-6 shadow-md hover-card border border-gray-100 w-36">
-        <div class="w-16 h-16 bg-navy rounded-2xl flex items-center justify-center">
-          <svg class="w-8 h-8 text-teal" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-.387 3.952 3.745 3.745 0 01-3.953.388 3.745 3.745 0 01-3.068 1.593A3.745 3.745 0 019 21.387a3.745 3.745 0 01-3.952-.387 3.745 3.745 0 01-3.389-3.389A3.745 3.745 0 01.9 14.625 3.745 3.745 0 012.493 11.557a3.745 3.745 0 010-3.114A3.745 3.745 0 01.9 5.375a3.745 3.745 0 013.389-3.39A3.745 3.745 0 019 .9a3.745 3.745 0 013.068 1.593A3.745 3.745 0 0115.068.9a3.745 3.745 0 013.952 3.388A3.745 3.745 0 0121 7.932a3.745 3.745 0 011.593 3.068 3.745 3.745 0 01-1.593 3.0z"/></svg>
-        </div>
-        <div class="text-center">
-          <div class="font-bold text-navy text-sm">LARSI</div>
-          <div class="text-teal text-xs font-semibold">Paripurna</div>
+<section id="about" class="py-20 px-4 bg-bg-light">
+  <div class="max-w-screen-xl mx-auto">
+
+    <!-- Header -->
+    <div class="text-center mb-14">
+      <span class="text-teal text-sm font-semibold uppercase tracking-widest">Tentang Kami</span>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-text-dark mt-2">Rumah Sakit Muhammadiyah<br/><em class="text-navy not-italic">Bandung Selatan</em></h2>
+    </div>
+
+    <!-- Sejarah + Visi Misi -->
+    <div class="grid lg:grid-cols-2 gap-12 items-start mb-16">
+      <!-- Sejarah -->
+      <div>
+        <h3 class="font-bold text-text-dark text-xl mb-4 flex items-center gap-3">
+          <span class="w-8 h-8 bg-navy rounded-lg flex items-center justify-center flex-shrink-0">
+            <svg class="w-4 h-4 text-teal" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+          </span>
+          Sejarah Singkat
+        </h3>
+        <p class="text-text-gray leading-relaxed mb-4">Rumah Sakit Muhammadiyah Bandung Selatan (RSMBS) berdiri di bawah naungan Persyarikatan Muhammadiyah, organisasi Islam terbesar di Indonesia. Berlokasi strategis di Jl. Raya Laswi, Ciparay, RS ini hadir untuk melayani kebutuhan kesehatan masyarakat Bandung Selatan dan sekitarnya.</p>
+        <p class="text-text-gray leading-relaxed">Dengan lebih dari 30 tahun pengalaman, RSMBS telah berkembang menjadi rumah sakit rujukan pilihan dengan 141 dokter spesialis, 200+ tempat tidur, dan layanan 24 jam penuh. Terakreditasi LARSI Paripurna — standar akreditasi tertinggi rumah sakit di Indonesia.</p>
+
+        <!-- PRIMA values -->
+        <div class="mt-6 bg-navy rounded-2xl p-5">
+          <div class="text-teal text-xs font-semibold uppercase tracking-widest mb-3">Nilai Pelayanan #RSMBSPRIMA</div>
+          <div class="grid grid-cols-5 gap-2 text-center">
+            <div><div class="text-2xl font-extrabold text-white font-display">P</div><div class="text-white/60 text-xs mt-1">Profesional</div></div>
+            <div><div class="text-2xl font-extrabold text-teal font-display">R</div><div class="text-white/60 text-xs mt-1">Ramah</div></div>
+            <div><div class="text-2xl font-extrabold text-white font-display">I</div><div class="text-white/60 text-xs mt-1">Islami</div></div>
+            <div><div class="text-2xl font-extrabold text-teal font-display">M</div><div class="text-white/60 text-xs mt-1">Modern</div></div>
+            <div><div class="text-2xl font-extrabold text-white font-display">A</div><div class="text-white/60 text-xs mt-1">Amanah</div></div>
+          </div>
         </div>
       </div>
-      <!-- Badge 2 -->
-      <div class="flex flex-col items-center gap-3 bg-white rounded-2xl p-6 shadow-md hover-card border border-gray-100 w-36">
-        <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center">
-          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>
+
+      <!-- Visi & Misi -->
+      <div class="space-y-6">
+        <!-- Visi -->
+        <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 bg-teal/10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-teal" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <h4 class="font-bold text-text-dark">Visi</h4>
+          </div>
+          <p class="text-text-gray text-sm leading-relaxed">"Menjadi rumah sakit Islam pilihan utama masyarakat Bandung Selatan yang memberikan pelayanan kesehatan berkualitas, profesional, dan berakhlak mulia."</p>
         </div>
-        <div class="text-center">
-          <div class="font-bold text-green-800 text-sm">Halal MUI</div>
-          <div class="text-green-600 text-xs font-semibold">Tersertifikasi</div>
-        </div>
-      </div>
-      <!-- Badge 3 -->
-      <div class="flex flex-col items-center gap-3 bg-white rounded-2xl p-6 shadow-md hover-card border border-gray-100 w-36">
-        <div class="w-16 h-16 bg-gold rounded-2xl flex items-center justify-center">
-          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>
-        </div>
-        <div class="text-center">
-          <div class="font-bold text-amber-800 text-sm">SIRSMA</div>
-          <div class="text-amber-600 text-xs font-semibold">Istimewa</div>
-        </div>
-      </div>
-      <!-- Badge 4 -->
-      <div class="flex flex-col items-center gap-3 bg-white rounded-2xl p-6 shadow-md hover-card border border-gray-100 w-36">
-        <div class="w-16 h-16 bg-teal rounded-2xl flex items-center justify-center">
-          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 002.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 012.916.52 6.003 6.003 0 01-5.395 4.972m0 0a6.726 6.726 0 01-2.749 1.35m0 0a6.772 6.772 0 01-3.044 0"/></svg>
-        </div>
-        <div class="text-center">
-          <div class="font-bold text-teal-800 text-sm">Peringkat RS</div>
-          <div class="text-teal text-xs font-semibold">Terbaik</div>
+        <!-- Misi -->
+        <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-9 h-9 bg-navy/10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-navy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h4 class="font-bold text-text-dark">Misi</h4>
+          </div>
+          <ul class="space-y-2 text-sm text-text-gray">
+            <li class="flex items-start gap-2"><span class="w-5 h-5 bg-teal/10 text-teal rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">1</span>Memberikan pelayanan kesehatan yang bermutu, aman, dan terjangkau.</li>
+            <li class="flex items-start gap-2"><span class="w-5 h-5 bg-teal/10 text-teal rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">2</span>Mengembangkan sumber daya manusia yang kompeten dan berakhlak Islami.</li>
+            <li class="flex items-start gap-2"><span class="w-5 h-5 bg-teal/10 text-teal rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">3</span>Meningkatkan sarana dan prasarana pelayanan medis secara berkelanjutan.</li>
+            <li class="flex items-start gap-2"><span class="w-5 h-5 bg-teal/10 text-teal rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">4</span>Berperan aktif dalam pemberdayaan kesehatan masyarakat Bandung Selatan.</li>
+          </ul>
         </div>
       </div>
     </div>
-    <p class="text-text-gray text-xs mt-6">Lulus Tingkat Paripurna — Standar akreditasi tertinggi rumah sakit di Indonesia</p>
+
+    <!-- Akreditasi Badges -->
+    <div class="border-t border-gray-200 pt-10">
+      <p class="text-center text-text-gray text-sm font-semibold uppercase tracking-widest mb-8">Pengakuan &amp; Akreditasi</p>
+      <div class="flex flex-wrap justify-center items-center gap-5">
+        <div class="flex flex-col items-center gap-3 bg-white rounded-2xl p-5 shadow-md hover-card border border-gray-100 w-36">
+          <div class="w-14 h-14 bg-navy rounded-2xl flex items-center justify-center">
+            <svg class="w-7 h-7 text-teal" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-.387 3.952 3.745 3.745 0 01-3.953.388 3.745 3.745 0 01-3.068 1.593A3.745 3.745 0 019 21.387a3.745 3.745 0 01-3.952-.387 3.745 3.745 0 01-3.389-3.389A3.745 3.745 0 01.9 14.625 3.745 3.745 0 012.493 11.557a3.745 3.745 0 010-3.114A3.745 3.745 0 01.9 5.375a3.745 3.745 0 013.389-3.39A3.745 3.745 0 019 .9a3.745 3.745 0 013.068 1.593A3.745 3.745 0 0115.068.9a3.745 3.745 0 013.952 3.388A3.745 3.745 0 0121 7.932a3.745 3.745 0 011.593 3.068 3.745 3.745 0 01-1.593 3.0z"/></svg>
+          </div>
+          <div class="text-center">
+            <div class="font-bold text-navy text-sm">LARSI</div>
+            <div class="text-teal text-xs font-semibold">Paripurna</div>
+            <div class="text-text-gray text-xs mt-1">No. 096/02/2023</div>
+          </div>
+        </div>
+        <div class="flex flex-col items-center gap-3 bg-white rounded-2xl p-5 shadow-md hover-card border border-gray-100 w-36">
+          <div class="w-14 h-14 bg-green-600 rounded-2xl flex items-center justify-center">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>
+          </div>
+          <div class="text-center">
+            <div class="font-bold text-green-800 text-sm">Halal MUI</div>
+            <div class="text-green-600 text-xs font-semibold">Tersertifikasi</div>
+          </div>
+        </div>
+        <div class="flex flex-col items-center gap-3 bg-white rounded-2xl p-5 shadow-md hover-card border border-gray-100 w-36">
+          <div class="w-14 h-14 bg-gold rounded-2xl flex items-center justify-center">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>
+          </div>
+          <div class="text-center">
+            <div class="font-bold text-amber-800 text-sm">SIRSMA</div>
+            <div class="text-amber-600 text-xs font-semibold">Istimewa</div>
+          </div>
+        </div>
+        <div class="flex flex-col items-center gap-3 bg-white rounded-2xl p-5 shadow-md hover-card border border-gray-100 w-36">
+          <div class="w-14 h-14 bg-teal rounded-2xl flex items-center justify-center">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 002.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 012.916.52 6.003 6.003 0 01-5.395 4.972m0 0a6.726 6.726 0 01-2.749 1.35m0 0a6.772 6.772 0 01-3.044 0"/></svg>
+          </div>
+          <div class="text-center">
+            <div class="font-bold text-teal-800 text-sm">RS Tipe B</div>
+            <div class="text-teal text-xs font-semibold">Tersertifikasi</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -859,15 +1197,15 @@
           <div class="font-bold text-white text-sm">Muhammadiyah Bandung Selatan</div>
         </div>
       </div>
-      <p class="text-white/50 text-sm mb-5 leading-relaxed italic">"Kesehatan Islami, Pelayanan Terpercaya"</p>
+      <p class="text-white/50 text-sm mb-5 leading-relaxed italic">"Siap memberikan pelayanan kesehatan yang <span class="text-teal font-semibold">PRIMA</span> untuk masyarakat Bandung Selatan. <span class="text-teal/70">#RSMBSPRIMA</span>"</p>
       <ul class="space-y-2 text-sm text-white/60">
         <li class="flex items-start gap-2">
           <svg class="w-4 h-4 mt-0.5 text-teal flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
-          Jl. KH. Ahmad Dahlan No.53, Bandung Selatan, Jawa Barat
+          <span>Jl. Raya Laswi, Ciheulang, Kec. Ciparay,<br/>Kab. Bandung, Jawa Barat 40375</span>
         </li>
         <li class="flex items-center gap-2">
           <svg class="w-4 h-4 text-teal flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
-          <a href="tel:0214245077" class="hover:text-teal transition-colors">021-4245077</a>
+          <a href="tel:02286023290" class="hover:text-teal transition-colors">(022) 86023290</a>
         </li>
         <li class="flex items-center gap-2">
           <svg class="w-4 h-4 text-teal flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
@@ -913,8 +1251,10 @@
         <li><a href="#facilities" class="hover:text-teal transition-colors flex items-center gap-1.5"><span class="text-teal/60">›</span>Fasilitas Unggulan</a></li>
         <li><a href="#services" class="hover:text-teal transition-colors flex items-center gap-1.5"><span class="text-teal/60">›</span>Promo &amp; Layanan</a></li>
         <li><a href="#news" class="hover:text-teal transition-colors flex items-center gap-1.5"><span class="text-teal/60">›</span>Berita &amp; Artikel</a></li>
+        <li><a href="#reviews" class="hover:text-teal transition-colors flex items-center gap-1.5"><span class="text-teal/60">›</span>Ulasan Pasien</a></li>
         <li><a href="#register-cta" class="hover:text-teal transition-colors flex items-center gap-1.5"><span class="text-teal/60">›</span>Daftar Online</a></li>
-        <li><a href="#" class="hover:text-teal transition-colors flex items-center gap-1.5"><span class="text-teal/60">›</span>Karier</a></li>
+        <li><a href="#location" class="hover:text-teal transition-colors flex items-center gap-1.5"><span class="text-teal/60">›</span>Lokasi &amp; Kontak</a></li>
+        <li><span class="flex items-center gap-1.5 text-white/30 cursor-default"><span class="text-teal/30">›</span>Karier <span class="text-xs bg-white/10 px-1.5 py-0.5 rounded-full">Segera</span></span></li>
       </ul>
     </div>
     <!-- Col 4: Social Media -->
@@ -922,11 +1262,11 @@
       <h4 class="font-bold text-white mb-5 text-sm uppercase tracking-wider">Ikuti Kami</h4>
       <p class="text-white/50 text-sm mb-5 leading-relaxed">Dapatkan info kesehatan, promo &amp; jadwal dokter terbaru</p>
       <div class="grid grid-cols-2 gap-3">
-        <a href="#" class="flex items-center gap-3 bg-white/5 hover:bg-blue-600 border border-white/10 rounded-xl px-3 py-2.5 transition-colors group">
+        <a href="https://www.facebook.com/rsmbsofficial/" target="_blank" rel="noopener" class="flex items-center gap-3 bg-white/5 hover:bg-blue-600 border border-white/10 rounded-xl px-3 py-2.5 transition-colors group">
           <svg class="w-5 h-5 text-white/60 group-hover:text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
           <span class="text-white/60 group-hover:text-white text-xs font-medium">Facebook</span>
         </a>
-        <a href="#" class="flex items-center gap-3 bg-white/5 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-500 border border-white/10 rounded-xl px-3 py-2.5 transition-all group">
+        <a href="https://www.instagram.com/rsmbsofficial/" target="_blank" rel="noopener" class="flex items-center gap-3 bg-white/5 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-500 border border-white/10 rounded-xl px-3 py-2.5 transition-all group">
           <svg class="w-5 h-5 text-white/60 group-hover:text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           <span class="text-white/60 group-hover:text-white text-xs font-medium">Instagram</span>
         </a>
@@ -941,11 +1281,17 @@
       </div>
       <!-- Jam Operasional -->
       <div class="mt-6 bg-white/5 border border-white/10 rounded-xl p-4">
-        <div class="text-white font-semibold text-xs mb-3 uppercase tracking-wider">Jam Operasional</div>
+        <div class="flex items-center gap-2 mb-3">
+          <div class="text-white font-semibold text-xs uppercase tracking-wider">Jam Operasional</div>
+          <span class="flex items-center gap-1 bg-green-500/20 text-green-300 text-xs font-semibold px-2 py-0.5 rounded-full">
+            <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>
+            Buka
+          </span>
+        </div>
         <ul class="text-xs text-white/50 space-y-1.5">
-          <li class="flex justify-between"><span>Senin – Jumat</span><span class="text-white/80">07.00 – 20.00</span></li>
-          <li class="flex justify-between"><span>Sabtu</span><span class="text-white/80">07.00 – 17.00</span></li>
-          <li class="flex justify-between"><span>IGD</span><span class="text-teal font-bold">24 Jam / 7 Hari</span></li>
+          <li class="flex justify-between"><span>Seluruh Layanan</span><span class="text-green-400 font-bold">24 Jam / 7 Hari</span></li>
+          <li class="flex justify-between"><span>Poli Rawat Jalan</span><span class="text-white/80">07.00 – 20.00</span></li>
+          <li class="flex justify-between"><span>IGD &amp; Rawat Inap</span><span class="text-teal font-bold">24 Jam</span></li>
         </ul>
       </div>
     </div>
@@ -953,7 +1299,7 @@
   <!-- Copyright Bar -->
   <div class="border-t border-white/10 py-5 px-4">
     <div class="max-w-screen-xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
-      <p>© 2025 Rumah Sakit Muhammadiyah Bandung Selatan. All rights reserved.</p>
+      <p>© 2026 Rumah Sakit Muhammadiyah Bandung Selatan — <span class="text-teal/60">#RSMBSPRIMA</span>. All rights reserved.</p>
       <div class="flex gap-4">
         <a href="#" class="hover:text-white transition-colors">Kebijakan Privasi</a>
         <a href="#" class="hover:text-white transition-colors">Syarat &amp; Ketentuan</a>
@@ -1144,7 +1490,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.3 });
 
-const statsSection = document.getElementById('stats');
+const statsSection = document.getElementById('doctors');
 if (statsSection) observer.observe(statsSection);
 
 // ─── KEYBOARD NAV ──────────────────────────────────────────────
@@ -1153,7 +1499,75 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight') nextSlide();
   if (e.key === 'ArrowLeft') prevSlide();
 });
+
+// ─── SCROLL REVEAL ─────────────────────────────────────────────
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('#reviews > div > div > div, #location, #about, #how-to-register').forEach(el => {
+  el.classList.add('reveal');
+  revealObserver.observe(el);
+});
+
+// ─── SCROLL SPY ────────────────────────────────────────────────
+const spySections = ['hero','about','doctors','facilities','services','how-to-register','location'];
+const navLinks = document.querySelectorAll('.nav-link');
+
+const spyObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.nav-link[data-section="${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+
+spySections.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) spyObserver.observe(el);
+});
 </script>
 
+<!-- Chatbot HTML -->
+<div class="chatbot-container">
+  <button id="chatbot-button" class="chatbot-button" aria-label="Open Chatbot">
+    💬
+    <span id="chat-unread" class="chatbot-badge hidden">0</span>
+  </button>
+  <div id="chat-window" class="chat-window">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar">🤖</div>
+        <div>
+          <h3>SARI</h3>
+          <span class="chat-status">● Online · Asisten Virtual RSMBS</span>
+        </div>
+      </div>
+      <div class="chat-header-actions">
+        <button id="reset-btn" class="reset-btn" title="Reset Percakapan">🔄</button>
+        <button id="close-btn" class="close-btn" aria-label="Tutup Chat">×</button>
+      </div>
+    </div>
+    <div id="chat-messages" class="chat-messages">
+      <!-- Messages will be added here -->
+    </div>
+    <div id="typing-indicator" class="typing-indicator">
+    </div>
+    <div id="suggestion-panel" class="suggestion-panel" aria-label="Saran cepat chat"></div>
+    <div class="chat-input-container">
+      <input type="text" id="chat-input" class="chat-input" placeholder="Ketik pesan Anda..." maxlength="300">
+      <button id="send-btn" class="send-btn" aria-label="Send Message">➤</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
