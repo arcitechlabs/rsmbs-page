@@ -3,6 +3,8 @@
 // Mode: AI-Powered via Google Gemini Backend
 
 // ─── Config ───────────────────────────────────────────────────────────────
+// Development : 'http://localhost:5001/api/chat'
+// Production  : ganti dengan URL backend yang sudah di-deploy (Railway/Render/dll)
 const BACKEND_URL = 'http://localhost:5001/api/chat';
 
 // ─── Emergency Keywords (Client-side bypass — TIDAK boleh dihapus) ────────

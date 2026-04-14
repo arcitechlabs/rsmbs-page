@@ -1,0 +1,14 @@
+# Claude Code local settings
+.claude/settings.local.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment files (backend punya .gitignore sendiri)
+.env
+.env.local
