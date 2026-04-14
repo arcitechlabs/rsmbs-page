@@ -3,9 +3,7 @@
 // Mode: AI-Powered via Google Gemini Backend
 
 // ─── Config ───────────────────────────────────────────────────────────────
-// Development : 'http://localhost:5001/api/chat'
-// Production  : ganti dengan URL backend yang sudah di-deploy (Railway/Render/dll)
-const BACKEND_URL = 'http://localhost:5001/api/chat';
+const BACKEND_URL = '/.netlify/functions/chat';
 
 // ─── Emergency Keywords (Client-side bypass — TIDAK boleh dihapus) ────────
 const emergencyKeywords = [
@@ -28,7 +26,8 @@ const quickActions = [
 ];
 
 // ─── Chat State ───────────────────────────────────────────────────────────
-let sessionId = null;   // Menyimpan session ID untuk memori percakapan
+// History disimpan di browser — dikirim ke Netlify Function tiap request
+let conversationHistory = [];
 let unreadCount = 0;
 let suppressNotification = true;
 
@@ -130,12 +129,12 @@ async function sendMessage() {
     return;
   }
 
-  // ── Prioritas 2: Kirim ke Google Gemini via Backend ──
+  // ── Prioritas 2: Kirim ke Netlify Function + riwayat percakapan ──
   try {
     const response = await fetch(BACKEND_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: sanitized, sessionId })
+      body: JSON.stringify({ message: sanitized, history: conversationHistory })
     });
 
     if (!response.ok) {
@@ -143,7 +142,8 @@ async function sendMessage() {
     }
 
     const data = await response.json();
-    sessionId = data.sessionId; // Simpan session ID untuk memori conversation
+    // Simpan history terbaru yang dikembalikan server (sudah di-trim otomatis)
+    conversationHistory = data.history || conversationHistory;
     hideTyping();
     addMessage('bot', data.reply);
     renderSuggestions(quickActions.slice(0, 4));
@@ -324,7 +324,7 @@ Ada yang bisa saya bantu hari ini? 😊`;
 
 function resetConversation() {
   chatMessages.innerHTML = '';
-  sessionId = null; // Reset session AI juga
+  conversationHistory = []; // Reset history browser juga
   showWelcome();
 }
 
