@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(lsof -ti:8000)",
+      "Bash(curl -s http://localhost:5001/api/health)",
+      "Bash(curl -s -X POST http://localhost:5001/api/chat -H 'Content-Type: application/json' -d '{\"message\":\"halo\",\"sessionId\":\"test123\"}')",
+      "Bash(curl -s -X POST http://localhost:5001/api/chat -H 'Content-Type: application/json' -d '{\"message\":\"halo\",\"sessionId\":\"test123\"}' -w '\\\\nHTTP Status: %{http_code}')",
+      "Bash(curl -s -X POST http://localhost:5001/api/chat -H 'Content-Type: application/json' -d '{\"message\":\"halo\"}')",
+      "Bash(node -e ':*)",
+      "Bash(curl -s -X POST http://localhost:5001/api/chat -H 'Content-Type: application/json' -d '{\"message\":\"halo sari\",\"sessionId\":\"debug1\"}')",
+      "Bash(lsof -ti:5001)",
+      "Bash(kill 32177)",
+      "Bash(npx ts-node:*)",
+      "Bash(echo \"PID: $!\")",
+      "Read(//private/tmp/**)",
+      "Bash(curl -s -X POST http://localhost:5001/api/chat -H 'Content-Type: application/json' -d '{\"message\":\"halo\",\"sessionId\":\"test1\"}')"
+    ]
+  }
+}
