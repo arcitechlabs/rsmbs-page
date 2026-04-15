@@ -12,3 +12,13 @@ npm-debug.log*
 # Environment files (backend punya .gitignore sendiri)
 .env
 .env.local
+
+# Local Netlify folder
+.netlify
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# Deno (backend dev only)
+deno.lock

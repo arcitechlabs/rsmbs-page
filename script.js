@@ -92,12 +92,12 @@ function isEmergency(input) {
 function getEmergencyAlert() {
   return `🚨 INI ADALAH KONDISI DARURAT — SEGERA HUBUNGI:
 
-📞 IGD RSMBS 24 Jam: (022) 7310-0001
-📞 Ambulans RSMBS: (022) 7310-0002
+📞 IGD RSMBS 24 Jam: (022) 86023290
+📞 Ambulans RSMBS: (022) 86023291
 📞 Hotline Nasional: 119
 
 🏥 IGD RSMBS:
-   Jl. Moch. Toha No. 123, Bandung Selatan, Jawa Barat 40253
+   Jl. Raya Laswi, Ciparay, Kab. Bandung, Jawa Barat 40365
 
 JANGAN TUNDA — segera minta bantuan atau pergi ke IGD terdekat.`;
 }
@@ -164,10 +164,10 @@ function getOfflineMessage() {
   return `Mohon maaf, SARI sedang tidak dapat terhubung ke server saat ini 🙏
 
 Untuk pertanyaan mendesak, silakan hubungi kami langsung:
-📞 Telepon: (022) 7310-XXXX
-📞 IGD 24 Jam: (022) 7310-0001
-💬 WhatsApp: 0811-2000-XXXX
-🌐 Website: www.rsmbs.co.id
+📞 Telepon: (022) 86023290
+📞 IGD 24 Jam: (022) 86023290
+💬 WhatsApp: 0811-2222-2986
+🌐 Website: https://architechlabs-rsmbs.netlify.app/
 
 Tim kami siap membantu Anda setiap saat!`;
 }
@@ -185,6 +185,18 @@ function applyInline(text) {
   text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
   // URLs to clickable links
   text = text.replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+  // Phone numbers: (0XX) XXXXXXXX → tel: link
+  text = text.replace(/(\(0\d{2,3}\)\s?\d{6,9})/g, (m) => {
+    const clean = m.replace(/[\s\-()]/g, '');
+    return `<a href="tel:${clean}">${m}</a>`;
+  });
+  // WA / mobile: 08XX-XXXX-XXXX or +62 8XX XXXX XXXX
+  text = text.replace(/(\+62\s?8[\d\s\-]{8,14}|08[\d][\d\-\s]{7,12})/g, (m) => {
+    const clean = '+62' + m.replace(/^\+62/, '').replace(/^0/, '').replace(/[\s\-]/g, '');
+    return `<a href="tel:${clean}">${m}</a>`;
+  });
+  // Hotline short: "119" as tel
+  text = text.replace(/\bHotline Nasional: (1\d{2})\b/g, 'Hotline Nasional: <a href="tel:$1">$1</a>');
   return text;
 }
 
@@ -299,15 +311,25 @@ function hideTyping() {
 function playNotification() {
   try {
     const ctx = new (window.AudioContext || window.webkitAudioContext)();
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.type = 'sine';
-    osc.frequency.value = 520;
-    gain.gain.setValueAtTime(0.08, ctx.currentTime);
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    osc.start();
-    osc.stop(ctx.currentTime + 0.08);
+
+    // iPhone-style "ting" — dua nada ascending dengan exponential decay
+    function ting(freq, when, duration, vol = 0.22) {
+      const osc  = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, when);
+      gain.gain.setValueAtTime(0, when);
+      gain.gain.linearRampToValueAtTime(vol, when + 0.004); // attack sangat cepat
+      gain.gain.exponentialRampToValueAtTime(0.0001, when + duration); // decay natural
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(when);
+      osc.stop(when + duration + 0.01);
+    }
+
+    const t = ctx.currentTime;
+    ting(1318.5, t,        0.22); // E6 — nada pertama
+    ting(1760,   t + 0.12, 0.28); // A6 — nada kedua (lebih tinggi, trailing lebih panjang)
   } catch (e) { /* silent fail */ }
 }
 

@@ -11,7 +11,7 @@ export const hospitalData = {
       phone: "(022) 7310-XXXX",
       igd: "(022) 7310-0001",
       email: "info@rsmbs.co.id",
-      website: "www.rsmbs.co.id",
+      website: "https://architechlabs-rsmbs.netlify.app",
       whatsapp: "0811-2000-XXXX",
       facebook: "https://www.facebook.com/rsmbsofficial/",
       instagram: "https://www.instagram.com/rsmbsofficial/",
