@@ -261,7 +261,17 @@ function addMessage(sender, text) {
 
   div.appendChild(bubble);
   chatMessages.appendChild(div);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
+
+  if (sender === 'user') {
+    // Pesan user: scroll ke bawah supaya input tetap terlihat
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  } else {
+    // Pesan bot: scroll ke bagian ATAS bubble agar user bisa baca dari awal
+    // requestAnimationFrame memastikan DOM sudah render sebelum scroll
+    requestAnimationFrame(() => {
+      div.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
 
   if (sender === 'bot' && !suppressNotification) {
     playNotification();
