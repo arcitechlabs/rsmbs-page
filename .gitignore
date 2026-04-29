@@ -22,3 +22,6 @@ package-lock.json
 
 # Deno (backend dev only)
 deno.lock
+
+# Build output
+dist/
