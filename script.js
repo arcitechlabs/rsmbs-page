@@ -22,6 +22,7 @@ const quickActions = [
   { label: '🚑 IGD / Darurat',            query: 'kontak igd dan darurat' },
   { label: '📍 Lokasi & Jam Buka',        query: 'lokasi dan jam operasional rsmbs' },
   { label: '💊 Layanan & Fasilitas',      query: 'layanan dan fasilitas rumah sakit' },
+  { label: '💼 Lowongan Kerja',           query: 'lowongan kerja dan karir di rsmbs' },
   { label: '📋 Menu Bantuan',             query: 'tampilkan menu bantuan lengkap' }
 ];
 

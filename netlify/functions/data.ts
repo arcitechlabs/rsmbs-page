@@ -320,4 +320,35 @@ export const hospitalData = {
     googleMaps: "https://maps.google.com/?q=Rumah+Sakit+Muhammadiyah+Bandung+Selatan",
     parking: "Tersedia parkir luas di area RS",
   },
+
+  // Sinkron dengan /jobs-data.js (frontend). Update bersamaan saat ada perubahan.
+  career: {
+    pageUrl: "/karir.html",
+    contactEmail: "hrd@rsmbs.ac.id",
+    contactWhatsApp: "0811-2222-2986",
+    officeHours: "Senin–Jumat 08:00–15:00 (HRD Lt. 4)",
+    totalOpenings: 12,
+    applicationProcess: [
+      "Siapkan berkas: CV, ijazah, transkrip, KTP, pas foto, STR/SIP (medis), sertifikat pendukung, surat lamaran",
+      "Kirim via email hrd@rsmbs.ac.id atau WA 0811-2222-2986 (atau datang langsung HRD Lt. 4)",
+      "Seleksi administrasi (1 minggu)",
+      "Tes tertulis & wawancara HRD (minggu ke-2)",
+      "Wawancara user & medical check-up (minggu ke-3)",
+      "Penawaran & onboarding (minggu ke-4)",
+    ],
+    openPositions: [
+      { title: "Dokter Spesialis Anak (Sp.A)",   category: "medis",      department: "Poliklinik Anak",        type: "Full-time",         deadline: "31 Mei 2026",   urgent: true,  url: "/karir.html#dokter-spesialis-anak" },
+      { title: "Dokter Umum (IGD)",              category: "medis",      department: "IGD 24 Jam",             type: "Full-time / Shift", deadline: "25 Mei 2026",   urgent: true,  url: "/karir.html#dokter-umum-igd" },
+      { title: "Perawat ICU",                    category: "medis",      department: "ICU / ICCU",             type: "Full-time / Shift", deadline: "30 Mei 2026",   urgent: false, url: "/karir.html#perawat-icu" },
+      { title: "Perawat Umum",                   category: "medis",      department: "Rawat Inap & Jalan",     type: "Full-time / Shift", deadline: "31 Mei 2026",   urgent: false, url: "/karir.html#perawat-umum" },
+      { title: "Bidan",                          category: "medis",      department: "Poli Kebidanan & VK",    type: "Full-time",         deadline: "30 Mei 2026",   urgent: false, url: "/karir.html#bidan" },
+      { title: "Apoteker",                       category: "penunjang",  department: "Instalasi Farmasi",      type: "Full-time",         deadline: "28 Mei 2026",   urgent: false, url: "/karir.html#apoteker" },
+      { title: "Analis Laboratorium",            category: "penunjang",  department: "Laboratorium Klinik",    type: "Full-time / Shift", deadline: "5 Juni 2026",   urgent: false, url: "/karir.html#analis-laboratorium" },
+      { title: "Radiografer",                    category: "penunjang",  department: "Radiologi",              type: "Full-time",         deadline: "10 Juni 2026",  urgent: false, url: "/karir.html#radiografer" },
+      { title: "Fisioterapis",                   category: "penunjang",  department: "Rehabilitasi Medik",     type: "Full-time",         deadline: "15 Juni 2026",  urgent: false, url: "/karir.html#fisioterapis" },
+      { title: "Customer Service",               category: "non-medis",  department: "Pelayanan Pelanggan",    type: "Full-time",         deadline: "31 Mei 2026",   urgent: false, url: "/karir.html#customer-service" },
+      { title: "IT Support",                     category: "non-medis",  department: "IT & SIM RS",            type: "Full-time",         deadline: "28 Mei 2026",   urgent: false, url: "/karir.html#it-support" },
+      { title: "Staff Akuntansi",                category: "non-medis",  department: "Keuangan",               type: "Full-time",         deadline: "1 Juni 2026",   urgent: false, url: "/karir.html#akuntan" },
+    ],
+  },
 };

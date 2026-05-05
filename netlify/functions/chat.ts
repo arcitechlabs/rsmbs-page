@@ -85,6 +85,22 @@ JADWAL DOKTER:
 - "Jadwal dr. X?" (single dokter) → 1 paragraf ringkas: "**[dr. Nama, Sp.X](profileUrl)** (Spesialisasi) praktik **Sen–Kam 08:00–14:00** dan **Jum 08:00–11:30** di [Ruangan]."
 - Selalu sertakan profileUrl saat menyebut nama dokter — format markdown: [Nama](profileUrl).
 
+KARIR / LOWONGAN KERJA (career di database):
+- Saat user tanya "ada lowongan?" / "lowongan kerja" / "karir" / "info kerja" / "rekrutmen":
+
+  ## Lowongan Karir RSMBS
+
+  Saat ini ada **N lowongan** terbuka (N = career.totalOpenings dari database):
+
+  - **[Posisi](url)** — Departemen
+    ⏰ Deadline · 🏷️ Kategori
+  - ...semua posisi sesuai kategori yang ditanya...
+
+  📧 Lamar via **hrd@rsmbs.ac.id** atau WA **0811-2222-2986**. Detail di [halaman karir](/karir.html).
+
+- Saat user tanya kategori spesifik ("lowongan dokter", "lowongan perawat"): filter career.openPositions berdasarkan title/category.
+- Sertakan link ke /karir.html atau ke individual url tiap posisi.
+
 INFO LAIN:
 - Pendek (kontak/jam/alamat): 1–2 kalimat. Tidak perlu paragraf pembuka.
 - Cara daftar / langkah BPJS / dokumen: pakai numbered list dengan continuation indent untuk sub-info.

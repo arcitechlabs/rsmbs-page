@@ -27,7 +27,8 @@
       "Bash(./backend/node_modules/.bin/tsc --noEmit --target es2020 --module commonjs --esModuleInterop --skipLibCheck --resolveJsonModule --types node netlify/functions/chat.ts netlify/functions/data.ts)",
       "Bash(/Users/aha.id/Documents/rubby/Project/RSMBS-PRO/backend/node_modules/.bin/tsc --noEmit --target es2020 --module commonjs --esModuleInterop --skipLibCheck --resolveJsonModule chat.ts data.ts)",
       "Bash(/Users/aha.id/Documents/rubby/Project/RSMBS-PRO/backend/node_modules/.bin/tsc --noEmit --target es2020 --module commonjs --esModuleInterop --skipLibCheck --resolveJsonModule --types node chat.ts data.ts)",
-      "Bash(echo \"---exit: $?\")"
+      "Bash(echo \"---exit: $?\")",
+      "Bash(echo \"exit: $?\")"
     ]
   }
 }

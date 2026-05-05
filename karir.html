@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karir di RSMBS — Lowongan Kerja Rumah Sakit Muhammadiyah Bandung Selatan</title>
+  <meta name="description" content="Bergabung bersama tim RSMBS — peluang karir untuk dokter, perawat, apoteker, radiografer, dan tenaga non-medis. Kerja yang bermakna, lingkungan Islami." />
+  <meta name="keywords" content="karir RSMBS, lowongan kerja rumah sakit bandung, lowongan dokter bandung, lowongan perawat ciparay, kerja di RS Muhammadiyah" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Karir di RSMBS" />
+  <meta property="og:description" content="Lowongan kerja di Rumah Sakit Muhammadiyah Bandung Selatan — tenaga medis, penunjang, dan non-medis." />
+  <meta name="theme-color" content="#2E2C71" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#2E2C71', 'navy-dark': '#1e1c5a',
+            teal: '#00B4D8', 'teal-dark': '#0096b5',
+            gold: '#F4A261',
+            'bg-light': '#F8FAFC',
+            'text-dark': '#1E293B',
+            'text-gray': '#64748B',
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            display: ['DM Serif Display', 'serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    .hover-card { transition: transform .25s, box-shadow .25s; }
+    .hover-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,.10); }
+    .badge-pill { display: inline-flex; align-items: center; padding: .3rem .7rem; border-radius: 9999px; font-size: .7rem; font-weight: 600; }
+    .job-detail { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+    .job-detail.open { max-height: 2200px; }
+    .filter-tab.active { background: #2E2C71; color: #fff; border-color: #2E2C71; }
+    .deadline-soon { animation: pulseSoon 2s infinite; }
+    @keyframes pulseSoon {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(244,162,97,.4); }
+      50%      { box-shadow: 0 0 0 6px rgba(244,162,97,0); }
+    }
+  </style>
+</head>
+<body class="font-sans bg-bg-light text-text-dark antialiased">
+
+<!-- ── Top Bar ── -->
+<div class="bg-navy text-white text-xs">
+  <div class="max-w-screen-xl mx-auto px-4 py-2 flex items-center justify-between gap-4">
+    <a href="tel:02286023290" class="flex items-center gap-1.5 hover:text-teal transition-colors">
+      <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.05-.24c1.12.45 2.33.69 3.58.69a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.24 2.46.69 3.58a1 1 0 01-.24 1.05l-2.33 2.16z"/></svg>
+      IGD 24 Jam: (022) 86023290
+    </a>
+    <a href="/" class="hidden sm:flex items-center gap-1.5 hover:text-teal transition-colors">
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M19 12H5m0 0l7 7m-7-7l7-7"/></svg>
+      Kembali ke Beranda
+    </a>
+  </div>
+</div>
+
+<!-- ── Navbar ── -->
+<nav class="bg-white sticky top-0 z-40 border-b border-gray-100 shadow-sm">
+  <div class="max-w-screen-xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2.5">
+      <img src="favicon.png" alt="RSMBS" class="w-10 h-10 object-contain" />
+      <div class="leading-tight">
+        <div class="text-xs font-bold text-navy uppercase tracking-widest">Rumah Sakit Muhammadiyah</div>
+        <div class="text-lg font-extrabold text-teal -mt-0.5 leading-none">Bandung Selatan</div>
+      </div>
+    </a>
+    <div class="flex items-center gap-2 sm:gap-4">
+      <a href="/" class="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-navy hover:text-teal transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M15 19l-7-7 7-7"/></svg>
+        Beranda
+      </a>
+      <a href="mailto:hrd@rsmbs.ac.id" class="bg-teal hover:bg-teal-dark text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-full transition-colors shadow-md shadow-teal/30 flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        Email HRD
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Breadcrumb ── -->
+<div class="bg-white border-b border-gray-100">
+  <div class="max-w-screen-xl mx-auto px-4 py-3 text-xs text-text-gray flex items-center gap-1.5 flex-wrap">
+    <a href="/" class="hover:text-navy">Beranda</a>
+    <span>/</span>
+    <span class="text-navy font-semibold">Karir</span>
+  </div>
+</div>
+
+<!-- ════ Hero ════ -->
+<section class="relative overflow-hidden" style="background: linear-gradient(135deg,#1a1854 0%,#2E2C71 50%,#0096b5 100%);">
+  <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22><path fill=%22%23ffffff%22 d=%22M30 0L0 30l30 30 30-30z%22/></svg>'); background-size: 60px;"></div>
+  <div class="relative max-w-screen-xl mx-auto px-4 py-16 lg:py-20 text-center text-white">
+    <span class="inline-block bg-white/10 border border-white/20 text-teal text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full backdrop-blur-sm">Bergabung Bersama Kami</span>
+    <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl mt-5 leading-tight">Karir di <em class="text-teal not-italic">RSMBS</em></h1>
+    <p class="text-white/80 text-lg mt-4 max-w-2xl mx-auto leading-relaxed">
+      Bersama 141 dokter spesialis dan ratusan tenaga profesional lainnya,
+      mari berkontribusi memberikan pelayanan kesehatan PRIMA Islami
+      bagi masyarakat Bandung Selatan.
+    </p>
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+      <a href="#lowongan" class="inline-flex items-center gap-2 bg-teal hover:bg-teal-dark text-white font-bold px-6 py-3 rounded-full transition-colors shadow-md shadow-teal/30">
+        Lihat Lowongan
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+      </a>
+      <a href="#cara-apply" class="inline-flex items-center gap-2 border-2 border-white/30 text-white hover:bg-white/10 font-bold px-6 py-3 rounded-full transition-colors backdrop-blur-sm">
+        Cara Melamar
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ Why Join Us ════ -->
+<section class="py-16 px-4 bg-white">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="text-teal text-sm font-semibold uppercase tracking-widest">Mengapa RSMBS</span>
+      <h2 class="font-display text-3xl sm:text-4xl text-text-dark mt-2">Tempat Bertumbuh & Memberi Manfaat</h2>
+      <p class="text-text-gray mt-3 max-w-2xl mx-auto">Lebih dari sekadar pekerjaan — kontribusi nyata di komunitas lokal dengan lingkungan kerja Islami yang profesional.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-bg-light rounded-2xl p-6 border border-gray-100">
+        <div class="w-12 h-12 rounded-xl bg-teal/10 text-teal flex items-center justify-center mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M12 6.253v13M12 6.253a4.5 4.5 0 01 9 0v13a4.5 4.5 0 00-9 0M12 6.253a4.5 4.5 0 00-9 0v13a4.5 4.5 0 019 0"/></svg>
+        </div>
+        <h3 class="font-bold text-text-dark mb-1.5">Lingkungan Islami</h3>
+        <p class="text-text-gray text-sm leading-relaxed">Bekerja dalam atmosfer kerja yang menjunjung nilai-nilai Islami: PRIMA — Profesional, Ramah, Islami, Modern, Amanah.</p>
+      </div>
+      <div class="bg-bg-light rounded-2xl p-6 border border-gray-100">
+        <div class="w-12 h-12 rounded-xl bg-navy/10 text-navy flex items-center justify-center mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        </div>
+        <h3 class="font-bold text-text-dark mb-1.5">Akreditasi LARSI Paripurna</h3>
+        <p class="text-text-gray text-sm leading-relaxed">RS dengan standar tertinggi — Anda akan bekerja dengan sistem mutu, SOP, dan teknologi yang terstandar nasional.</p>
+      </div>
+      <div class="bg-bg-light rounded-2xl p-6 border border-gray-100">
+        <div class="w-12 h-12 rounded-xl bg-gold/15 text-gold flex items-center justify-center mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <h3 class="font-bold text-text-dark mb-1.5">Pelatihan Berkelanjutan</h3>
+        <p class="text-text-gray text-sm leading-relaxed">Akses pelatihan in-house, sertifikasi profesi (BTCLS, ACLS, ATLS), dan kesempatan ikut seminar/workshop nasional.</p>
+      </div>
+      <div class="bg-bg-light rounded-2xl p-6 border border-gray-100">
+        <div class="w-12 h-12 rounded-xl bg-teal/10 text-teal flex items-center justify-center mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+        </div>
+        <h3 class="font-bold text-text-dark mb-1.5">Tunjangan Lengkap</h3>
+        <p class="text-text-gray text-sm leading-relaxed">BPJS Kesehatan & Ketenagakerjaan, tunjangan makan, transport, shift, jaga, dan profesi sesuai posisi.</p>
+      </div>
+      <div class="bg-bg-light rounded-2xl p-6 border border-gray-100">
+        <div class="w-12 h-12 rounded-xl bg-navy/10 text-navy flex items-center justify-center mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+        </div>
+        <h3 class="font-bold text-text-dark mb-1.5">Tim Kolaboratif</h3>
+        <p class="text-text-gray text-sm leading-relaxed">Bergabung dengan tim multidisiplin yang saling mendukung — dokter, perawat, dan tenaga penunjang yang berpengalaman.</p>
+      </div>
+      <div class="bg-bg-light rounded-2xl p-6 border border-gray-100">
+        <div class="w-12 h-12 rounded-xl bg-gold/15 text-gold flex items-center justify-center mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        </div>
+        <h3 class="font-bold text-text-dark mb-1.5">Lokasi Strategis</h3>
+        <p class="text-text-gray text-sm leading-relaxed">Di jalan utama Ciparay (Jl. Raya Laswi), akses mudah dari Majalaya, Banjaran, dan Bandung Kota.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ Filter & Lowongan ════ -->
+<section id="lowongan" class="py-16 px-4 bg-bg-light">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="text-center mb-10">
+      <span class="text-teal text-sm font-semibold uppercase tracking-widest">Lowongan Saat Ini</span>
+      <h2 class="font-display text-3xl sm:text-4xl text-text-dark mt-2">Posisi yang Sedang Dibuka</h2>
+      <p class="text-text-gray mt-3 max-w-2xl mx-auto">Klik posisi untuk melihat detail kualifikasi, tanggung jawab, dan benefit.</p>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 max-w-3xl mx-auto">
+      <div class="bg-white border border-gray-100 rounded-xl p-4 text-center shadow-sm">
+        <div id="stat-total" class="text-3xl font-bold text-navy font-display">0</div>
+        <div class="text-xs text-text-gray font-medium mt-1">Total Lowongan</div>
+      </div>
+      <div class="bg-white border border-gray-100 rounded-xl p-4 text-center shadow-sm">
+        <div id="stat-medis" class="text-3xl font-bold text-teal font-display">0</div>
+        <div class="text-xs text-text-gray font-medium mt-1">Medis</div>
+      </div>
+      <div class="bg-white border border-gray-100 rounded-xl p-4 text-center shadow-sm">
+        <div id="stat-penunjang" class="text-3xl font-bold text-navy font-display">0</div>
+        <div class="text-xs text-text-gray font-medium mt-1">Penunjang</div>
+      </div>
+      <div class="bg-white border border-gray-100 rounded-xl p-4 text-center shadow-sm">
+        <div id="stat-nonmedis" class="text-3xl font-bold text-gold font-display">0</div>
+        <div class="text-xs text-text-gray font-medium mt-1">Non-Medis</div>
+      </div>
+    </div>
+
+    <!-- Filter -->
+    <div class="flex flex-wrap items-center justify-center gap-2 mb-8">
+      <button onclick="filterJobs('all')" class="filter-tab active flex-shrink-0 px-5 py-2 rounded-full border-2 border-gray-200 text-sm font-semibold text-text-gray transition-all">Semua Lowongan</button>
+      <button onclick="filterJobs('medis')" class="filter-tab flex-shrink-0 px-5 py-2 rounded-full border-2 border-gray-200 text-sm font-semibold text-text-gray transition-all">🩺 Tenaga Medis</button>
+      <button onclick="filterJobs('penunjang')" class="filter-tab flex-shrink-0 px-5 py-2 rounded-full border-2 border-gray-200 text-sm font-semibold text-text-gray transition-all">🧪 Penunjang Medis</button>
+      <button onclick="filterJobs('non-medis')" class="filter-tab flex-shrink-0 px-5 py-2 rounded-full border-2 border-gray-200 text-sm font-semibold text-text-gray transition-all">💼 Non-Medis</button>
+    </div>
+
+    <!-- Job List -->
+    <div id="job-list" class="space-y-4 max-w-4xl mx-auto"></div>
+
+    <div id="job-empty" class="hidden text-center py-12 text-text-gray">
+      <div class="text-4xl mb-3">🔍</div>
+      <p class="font-semibold">Tidak ada lowongan di kategori ini</p>
+      <p class="text-sm">Coba lihat kategori lain atau hubungi HRD untuk info lebih lanjut.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ Cara Apply ════ -->
+<section id="cara-apply" class="py-16 px-4 bg-white">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="text-teal text-sm font-semibold uppercase tracking-widest">Proses Lamaran</span>
+      <h2 class="font-display text-3xl sm:text-4xl text-text-dark mt-2">Cara Melamar di RSMBS</h2>
+      <p class="text-text-gray mt-3 max-w-2xl mx-auto">Tiga langkah sederhana untuk memulai perjalanan karir Anda bersama kami.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
+      <div class="relative bg-bg-light rounded-2xl p-6 border-l-4 border-teal">
+        <div class="absolute top-4 right-4 w-10 h-10 rounded-full bg-teal text-white font-display text-xl flex items-center justify-center font-bold">1</div>
+        <h3 class="font-bold text-text-dark mb-2 pr-12">Siapkan Berkas</h3>
+        <ul class="text-sm text-text-gray space-y-1.5 leading-relaxed">
+          <li>• CV terbaru (PDF)</li>
+          <li>• Ijazah & transkrip nilai</li>
+          <li>• KTP & pas foto terbaru</li>
+          <li>• STR/SIP (untuk tenaga medis)</li>
+          <li>• Sertifikat pendukung (BTCLS, ACLS, dll)</li>
+          <li>• Surat lamaran ditujukan ke Direktur RSMBS</li>
+        </ul>
+      </div>
+
+      <div class="relative bg-bg-light rounded-2xl p-6 border-l-4 border-navy">
+        <div class="absolute top-4 right-4 w-10 h-10 rounded-full bg-navy text-white font-display text-xl flex items-center justify-center font-bold">2</div>
+        <h3 class="font-bold text-text-dark mb-2 pr-12">Kirim Lamaran</h3>
+        <p class="text-sm text-text-gray leading-relaxed mb-3">Kirim berkas lengkap melalui salah satu kanal:</p>
+        <div class="space-y-2">
+          <a href="mailto:hrd@rsmbs.ac.id" class="flex items-center gap-2 text-sm text-navy hover:text-teal font-semibold">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            hrd@rsmbs.ac.id
+          </a>
+          <a href="https://wa.me/6281122222986?text=Halo%20HRD%20RSMBS%2C%20saya%20ingin%20melamar%20pekerjaan" target="_blank" class="flex items-center gap-2 text-sm text-navy hover:text-teal font-semibold">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            0811-2222-2986
+          </a>
+          <p class="text-xs text-text-gray pt-1">Atau datang langsung ke HRD RSMBS Lt. 4, Senin–Jumat 08:00–15:00.</p>
+        </div>
+      </div>
+
+      <div class="relative bg-bg-light rounded-2xl p-6 border-l-4 border-gold">
+        <div class="absolute top-4 right-4 w-10 h-10 rounded-full bg-gold text-white font-display text-xl flex items-center justify-center font-bold">3</div>
+        <h3 class="font-bold text-text-dark mb-2 pr-12">Proses Seleksi</h3>
+        <ul class="text-sm text-text-gray space-y-1.5 leading-relaxed">
+          <li>• <strong>Hari 1–7:</strong> Seleksi administrasi</li>
+          <li>• <strong>Hari 8–14:</strong> Tes tertulis & wawancara HRD</li>
+          <li>• <strong>Hari 15–21:</strong> Wawancara user & medical check-up</li>
+          <li>• <strong>Hari 22–30:</strong> Penawaran & onboarding</li>
+        </ul>
+        <p class="text-xs text-text-gray mt-3 italic">Pelamar yang lolos administrasi akan dihubungi dalam 7 hari kerja.</p>
+      </div>
+    </div>
+
+    <!-- CTA Email -->
+    <div class="max-w-3xl mx-auto rounded-2xl p-8 lg:p-10 text-center text-white shadow-xl" style="background: linear-gradient(135deg,#2E2C71,#00B4D8);">
+      <h3 class="font-display text-2xl lg:text-3xl mb-2">Posisi Tidak Tersedia?</h3>
+      <p class="text-white/85 mb-6 max-w-xl mx-auto">Tetap kirim CV Anda — kami akan menyimpannya untuk dipertimbangkan saat ada lowongan yang sesuai dengan kualifikasi Anda.</p>
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <a href="mailto:hrd@rsmbs.ac.id?subject=Lamaran%20Spekulatif%20-%20RSMBS&body=Kepada%20Tim%20HRD%20RSMBS%2C%0A%0ASaya%20tertarik%20bergabung%20bersama%20RSMBS%20dan%20mengirimkan%20CV%20saya%20untuk%20dipertimbangkan%20sesuai%20kualifikasi%20yang%20tersedia.%0A%0ATerima%20kasih.%0A%0AHormat%20saya%2C%0A%5BNama%20Anda%5D" class="bg-white text-navy hover:bg-white/90 font-bold px-6 py-3 rounded-full transition-colors inline-flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Kirim CV Spekulatif
+        </a>
+        <a href="https://wa.me/6281122222986?text=Halo%20HRD%20RSMBS%2C%20saya%20ingin%20bertanya%20tentang%20lowongan%20kerja" target="_blank" class="border-2 border-white/40 hover:bg-white/10 text-white font-bold px-6 py-3 rounded-full transition-colors inline-flex items-center gap-2 backdrop-blur-sm">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Tanya HRD
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ Footer ════ -->
+<footer class="bg-navy text-white py-10 px-4">
+  <div class="max-w-screen-xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-sm">
+    <div>
+      <div class="flex items-center gap-2 mb-3">
+        <img src="favicon.png" alt="RSMBS" class="w-9 h-9 object-contain"/>
+        <div class="font-display text-xl">RSMBS</div>
+      </div>
+      <p class="text-white/70 leading-relaxed text-xs">Rumah Sakit Muhammadiyah Bandung Selatan — Pelayanan PRIMA Islami 24 Jam.</p>
+    </div>
+    <div>
+      <h4 class="font-bold mb-3 text-teal">HRD & Karir</h4>
+      <ul class="space-y-2 text-white/70 text-xs">
+        <li><a href="mailto:hrd@rsmbs.ac.id" class="hover:text-teal">📧 hrd@rsmbs.ac.id</a></li>
+        <li><a href="https://wa.me/6281122222986" target="_blank" class="hover:text-teal">💬 0811-2222-2986</a></li>
+        <li>📞 (022) 86023290</li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-bold mb-3 text-teal">Alamat</h4>
+      <p class="text-white/70 text-xs leading-relaxed">Jl. Raya Laswi, Ciheulang,<br/>Kec. Ciparay, Kab. Bandung,<br/>Jawa Barat 40375</p>
+    </div>
+    <div>
+      <h4 class="font-bold mb-3 text-teal">Tautan</h4>
+      <ul class="space-y-2 text-white/70 text-xs">
+        <li><a href="/" class="hover:text-teal">Beranda</a></li>
+        <li><a href="/#doctors" class="hover:text-teal">Dokter Spesialis</a></li>
+        <li><a href="/#how-to-register" class="hover:text-teal">Cara Daftar Berobat</a></li>
+        <li><a href="/karir.html" class="hover:text-teal">Karir</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-screen-xl mx-auto mt-8 pt-6 border-t border-white/10 text-center text-xs text-white/50">
+    © 2026 Rumah Sakit Muhammadiyah Bandung Selatan · #RSMBSPRIMA
+  </div>
+</footer>
+
+<!-- ════ Chatbot SARI ════ -->
+<button id="chatbot-button" aria-label="Buka SARI chatbot" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-xl hover:scale-110 transition-transform flex items-center justify-center text-white" style="background: linear-gradient(135deg, #2E2C71 0%, #00B4D8 100%);">
+  <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 4v-4z"/></svg>
+  <span id="chat-unread" class="hidden absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">0</span>
+</button>
+
+<div id="chat-window" class="hidden fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-3rem)] h-[560px] max-h-[calc(100vh-8rem)] bg-white rounded-2xl shadow-2xl flex-col overflow-hidden border border-gray-100">
+  <div class="flex items-center justify-between p-4 text-white" style="background: linear-gradient(135deg, #2E2C71, #00B4D8);">
+    <div class="flex items-center gap-2.5">
+      <div class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center font-bold text-sm">SA</div>
+      <div>
+        <div class="font-bold text-sm leading-tight">SARI</div>
+        <div class="text-[10px] text-white/80">Asisten Virtual RSMBS</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-1">
+      <button id="reset-btn" aria-label="Reset percakapan" class="p-1.5 hover:bg-white/15 rounded-full">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 4v5h5M20 20v-5h-5M4 20a8 8 0 0114-5M20 4a8 8 0 00-14 5"/></svg>
+      </button>
+      <button id="close-btn" aria-label="Tutup chat" class="p-1.5 hover:bg-white/15 rounded-full">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="chat-messages" class="flex-1 overflow-y-auto p-4 bg-bg-light"></div>
+  <div id="typing-indicator" class="px-4 py-2 text-xs text-text-gray hidden items-center gap-1.5"></div>
+  <div id="suggestion-panel" class="px-3 py-2 flex flex-wrap gap-1.5 border-t border-gray-100 bg-white hidden"></div>
+  <div class="p-3 border-t border-gray-100 bg-white flex items-center gap-2">
+    <input id="chat-input" type="text" placeholder="Ketik pertanyaan…" class="flex-1 px-3 py-2.5 rounded-full bg-bg-light border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal/30" />
+    <button id="send-btn" aria-label="Kirim" class="bg-teal hover:bg-teal-dark text-white p-2.5 rounded-full transition-colors">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21l20.99-9L2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script src="jobs-data.js"></script>
+<script>
+// ─── State ──────────────────────────────────────────────────────────────────
+let currentFilter = 'all';
+
+// ─── Render ────────────────────────────────────────────────────────────────
+function jobCardHTML(job) {
+  const cat = window.JOB_HELPERS.categoryLabel(job.category);
+  const days = window.JOB_HELPERS.daysUntilDeadline(job.deadline);
+  const deadlineFmt = window.JOB_HELPERS.formatDate(job.deadline);
+  const expired = days < 0;
+  const soon = days >= 0 && days <= 7;
+
+  const deadlineBadge = expired
+    ? `<span class="badge-pill bg-red-50 text-red-600 border border-red-200">Sudah Lewat</span>`
+    : soon
+      ? `<span class="badge-pill bg-gold/15 text-gold border border-gold/30 deadline-soon">⏳ Sisa ${days} hari</span>`
+      : `<span class="badge-pill bg-bg-light text-text-gray border border-gray-200">${days} hari lagi</span>`;
+
+  const urgentBadge = job.isUrgent
+    ? `<span class="badge-pill bg-teal/10 text-teal border border-teal/30">🔥 Urgent</span>`
+    : '';
+
+  const reqHTML = job.requirements.map(r => `<li class="flex items-start gap-2"><span class="text-teal mt-0.5">✓</span><span>${r}</span></li>`).join('');
+  const respHTML = job.responsibilities.map(r => `<li class="flex items-start gap-2"><span class="text-navy mt-0.5">•</span><span>${r}</span></li>`).join('');
+  const benHTML = job.benefits.map(r => `<li class="flex items-start gap-2"><span class="text-gold mt-0.5">★</span><span>${r}</span></li>`).join('');
+
+  return `
+    <article class="hover-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden" data-cat="${job.category}">
+      <button onclick="toggleJob('${job.id}')" class="w-full text-left px-5 py-4 sm:px-6 sm:py-5 flex items-start gap-4 hover:bg-bg-light/50 transition-colors">
+        <div class="flex-1 min-w-0">
+          <div class="flex flex-wrap items-center gap-2 mb-1.5">
+            <span class="badge-pill bg-${cat.color}/10 text-${cat.color} border border-${cat.color}/30">${cat.label}</span>
+            <span class="badge-pill bg-bg-light text-text-gray border border-gray-200">${job.type}</span>
+            ${urgentBadge}
+            ${deadlineBadge}
+          </div>
+          <h3 class="font-bold text-text-dark text-base sm:text-lg leading-snug">${job.title}</h3>
+          <p class="text-text-gray text-xs sm:text-sm mt-1">📍 ${job.department}</p>
+          <p class="text-text-gray text-sm mt-2 leading-relaxed line-clamp-2">${job.summary}</p>
+        </div>
+        <svg id="chev-${job.id}" class="w-5 h-5 text-navy/60 flex-shrink-0 mt-2 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M19 9l-7 7-7-7"/></svg>
+      </button>
+
+      <div id="detail-${job.id}" class="job-detail border-t border-gray-100">
+        <div class="px-5 py-5 sm:px-6 sm:py-6 grid lg:grid-cols-3 gap-6">
+          <div>
+            <h4 class="font-bold text-teal text-xs uppercase tracking-wider mb-3">Kualifikasi</h4>
+            <ul class="space-y-2 text-sm text-text-dark leading-relaxed">${reqHTML}</ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-navy text-xs uppercase tracking-wider mb-3">Tanggung Jawab</h4>
+            <ul class="space-y-2 text-sm text-text-dark leading-relaxed">${respHTML}</ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-gold text-xs uppercase tracking-wider mb-3">Benefit</h4>
+            <ul class="space-y-2 text-sm text-text-dark leading-relaxed">${benHTML}</ul>
+          </div>
+        </div>
+
+        <div class="px-5 py-4 sm:px-6 bg-bg-light border-t border-gray-100 flex flex-wrap items-center justify-between gap-3">
+          <div class="text-xs text-text-gray">
+            Diposting: <span class="font-semibold text-navy">${window.JOB_HELPERS.formatDate(job.postedDate)}</span>
+            · Deadline: <span class="font-semibold ${expired ? 'text-red-600' : 'text-navy'}">${deadlineFmt}</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <a href="${window.JOB_HELPERS.buildEmailLink(job)}"
+               class="inline-flex items-center gap-2 bg-navy hover:bg-navy-dark text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-full transition-colors shadow-sm">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              Kirim via Email
+            </a>
+            <a href="${window.JOB_HELPERS.buildWaLink(job)}" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1ebe57] text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-full transition-colors shadow-sm">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Lamar via WA
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function renderJobs(filter) {
+  const list = document.getElementById('job-list');
+  const empty = document.getElementById('job-empty');
+  const filtered = filter === 'all' ? window.JOBS : window.JOBS.filter(j => j.category === filter);
+
+  if (filtered.length === 0) {
+    list.innerHTML = '';
+    empty.classList.remove('hidden');
+    return;
+  }
+  empty.classList.add('hidden');
+  list.innerHTML = filtered.map(jobCardHTML).join('');
+}
+
+function toggleJob(id) {
+  const detail = document.getElementById('detail-' + id);
+  const chev = document.getElementById('chev-' + id);
+  const isOpen = detail.classList.contains('open');
+  // Tutup semua dulu (single-open accordion)
+  document.querySelectorAll('.job-detail.open').forEach(d => d.classList.remove('open'));
+  document.querySelectorAll('[id^="chev-"]').forEach(c => c.style.transform = '');
+  if (!isOpen) {
+    detail.classList.add('open');
+    chev.style.transform = 'rotate(180deg)';
+  }
+}
+
+function filterJobs(cat) {
+  currentFilter = cat;
+  renderJobs(cat);
+  document.querySelectorAll('.filter-tab').forEach(t => {
+    t.classList.toggle('active',
+      (cat === 'all' && t.textContent.trim() === 'Semua Lowongan') ||
+      t.textContent.toLowerCase().includes(cat.replace('-medis', ''))
+    );
+  });
+}
+
+// Init stats
+function initStats() {
+  document.getElementById('stat-total').textContent = window.JOBS.length;
+  document.getElementById('stat-medis').textContent = window.JOBS.filter(j => j.category === 'medis').length;
+  document.getElementById('stat-penunjang').textContent = window.JOBS.filter(j => j.category === 'penunjang').length;
+  document.getElementById('stat-nonmedis').textContent = window.JOBS.filter(j => j.category === 'non-medis').length;
+}
+
+initStats();
+renderJobs('all');
+
+// Open from URL hash (#dokter-spesialis-anak)
+if (location.hash) {
+  const id = location.hash.replace('#','');
+  if (window.JOB_HELPERS.findById(id)) {
+    setTimeout(() => toggleJob(id), 200);
+    setTimeout(() => document.getElementById('detail-' + id)?.scrollIntoView({behavior:'smooth', block:'center'}), 350);
+  }
+}
+</script>
+<script src="script.js"></script>
+</body>
+</html>
