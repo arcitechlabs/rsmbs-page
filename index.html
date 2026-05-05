@@ -522,6 +522,10 @@
       <button onclick="filterDoc('Jantung')" class="spec-tab flex-shrink-0 px-4 py-2 rounded-full border border-gray-200 text-sm font-medium text-text-gray transition-all hover:bg-navy hover:text-white">Jantung</button>
       <button onclick="filterDoc('Saraf')" class="spec-tab flex-shrink-0 px-4 py-2 rounded-full border border-gray-200 text-sm font-medium text-text-gray transition-all hover:bg-navy hover:text-white">Saraf</button>
       <button onclick="filterDoc('Ortopedi')" class="spec-tab flex-shrink-0 px-4 py-2 rounded-full border border-gray-200 text-sm font-medium text-text-gray transition-all hover:bg-navy hover:text-white">Ortopedi</button>
+      <button onclick="filterDoc('Mata')" class="spec-tab flex-shrink-0 px-4 py-2 rounded-full border border-gray-200 text-sm font-medium text-text-gray transition-all hover:bg-navy hover:text-white">Mata</button>
+      <button onclick="filterDoc('THT')" class="spec-tab flex-shrink-0 px-4 py-2 rounded-full border border-gray-200 text-sm font-medium text-text-gray transition-all hover:bg-navy hover:text-white">THT</button>
+      <button onclick="filterDoc('Kulit &amp; Kelamin')" class="spec-tab flex-shrink-0 px-4 py-2 rounded-full border border-gray-200 text-sm font-medium text-text-gray transition-all hover:bg-navy hover:text-white">Kulit &amp; Kelamin</button>
+      <button onclick="filterDoc('Jiwa')" class="spec-tab flex-shrink-0 px-4 py-2 rounded-full border border-gray-200 text-sm font-medium text-text-gray transition-all hover:bg-navy hover:text-white">Jiwa</button>
     </div>
 
     <!-- Grid Dokter -->
@@ -1315,7 +1319,7 @@
           <svg class="faq-icon w-5 h-5 text-teal flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="faq-body hidden px-6 pb-5 border-t border-gray-50">
-          <p class="text-text-gray text-sm leading-relaxed pt-4">Jadwal dokter bisa dilihat di bagian <a href="#doctors" class="text-teal font-semibold hover:underline">Dokter Spesialis</a> pada halaman ini, atau konfirmasi via WhatsApp <a href="https://wa.me/6281122222986?text=Halo%20RSMBS%2C%20saya%20ingin%20konfirmasi%20jadwal%20dokter" target="_blank" class="text-teal font-semibold hover:underline">+62 811 2222 2986</a> karena jadwal dapat berubah sewaktu-waktu.</p>
+          <p class="text-text-gray text-sm leading-relaxed pt-4">Klik kartu dokter di bagian <a href="#doctors" class="text-teal font-semibold hover:underline">Dokter Spesialis</a> untuk melihat <strong>profil lengkap, jadwal harian, dan ruangan praktik</strong>. Atau konfirmasi via WhatsApp <a href="https://wa.me/6281122222986?text=Halo%20RSMBS%2C%20saya%20ingin%20konfirmasi%20jadwal%20dokter" target="_blank" class="text-teal font-semibold hover:underline">+62 811 2222 2986</a>. Jadwal dapat berubah sewaktu-waktu.</p>
         </div>
       </div>
 
@@ -1678,39 +1682,60 @@
 <!-- ════════════════════════════════════════════
      JAVASCRIPT
 ═════════════════════════════════════════════ -->
+<script src="doctors-data.js"></script>
 <script>
-// ─── DOCTOR DATA ──────────────────────────────────────────────
-const doctors = [
-  { name: 'dr. Ahmad Fauzi, Sp.PD', spec: 'Penyakit Dalam', img: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=200&h=200&q=80', category: 'Penyakit Dalam', day: 'Sen–Jum' },
-  { name: 'dr. Siti Rahmawati, Sp.A', spec: 'Dokter Anak', img: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=200&h=200&q=80', category: 'Anak', day: 'Sen–Sab' },
-  { name: 'dr. Budi Santoso, Sp.OG', spec: 'Kandungan & Kebidanan', img: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=200&h=200&q=80', category: 'Kandungan', day: 'Sel–Sab' },
-  { name: 'dr. Dewi Kartika, Sp.JP', spec: 'Jantung & Pembuluh', img: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=200&h=200&q=80', category: 'Jantung', day: 'Sen–Jum' },
-  { name: 'dr. Rizky Pratama, Sp.BS', spec: 'Bedah Saraf', img: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=200&h=200&q=80', category: 'Bedah', day: 'Sen, Rab, Jum' },
-  { name: 'dr. Nurul Hidayah, Sp.N', spec: 'Saraf (Neurologi)', img: 'https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=200&h=200&q=80', category: 'Saraf', day: 'Sel–Jum' },
-  { name: 'dr. Yoga Perdana, Sp.OT', spec: 'Ortopedi & Traumatologi', img: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=200&h=200&q=80', category: 'Penyakit Dalam', day: 'Sen–Sab' },
-  { name: 'dr. Maya Lestari, Sp.B', spec: 'Bedah Umum', img: 'https://images.unsplash.com/photo-1651008376811-b90baee60c1f?auto=format&fit=crop&w=200&h=200&q=80', category: 'Bedah', day: 'Sel, Rab, Sab' },
-];
+// ─── DOCTOR RENDER ────────────────────────────────────────────
+// Sumber data: window.DOCTORS dari doctors-data.js
+const doctors = window.DOCTORS;
+const getScheduleGroups = window.DOCTOR_HELPERS.getScheduleGroups;
+const buildWaLink = window.DOCTOR_HELPERS.buildWaLink;
 
 let currentFilter = 'all';
+
+function doctorCardHTML(d) {
+  const groups = getScheduleGroups(d.schedule);
+  const scheduleListHTML = groups.map(g => `
+    <li class="flex items-baseline gap-2 text-xs leading-relaxed">
+      <span class="text-navy font-semibold w-12 flex-shrink-0">${g.days}</span>
+      <span class="text-text-gray font-mono">${g.time}</span>
+    </li>
+  `).join('');
+
+  return `
+    <article class="hover-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 flex flex-col">
+      <a href="dokter.html?id=${d.id}" class="block relative overflow-hidden h-40 bg-gradient-to-br from-navy/10 to-teal/10 flex items-center justify-center">
+        <img src="${d.img}" alt="${d.name}" class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg" loading="lazy" />
+      </a>
+      <div class="p-4 flex flex-col flex-1">
+        <a href="dokter.html?id=${d.id}" class="block hover:text-navy transition-colors">
+          <h3 class="font-bold text-text-dark text-sm leading-snug mb-1">${d.name}</h3>
+          <p class="text-teal text-xs font-semibold mb-3">${d.spec}</p>
+        </a>
+        <div class="flex items-start gap-1.5 mb-4">
+          <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-navy/60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path stroke-linecap="round" d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <ul class="space-y-1 flex-1">${scheduleListHTML}</ul>
+        </div>
+        <div class="mt-auto flex gap-2">
+          <a href="dokter.html?id=${d.id}"
+             class="flex-1 text-center py-2 border-2 border-teal text-teal hover:bg-teal hover:text-white text-xs font-bold rounded-xl transition-colors">
+            Lihat Profil
+          </a>
+          <a href="${buildWaLink(d)}" target="_blank" rel="noopener noreferrer"
+             aria-label="Buat janji dengan ${d.name} via WhatsApp"
+             title="Buat janji via WhatsApp"
+             class="flex items-center justify-center w-10 h-[38px] bg-[#25D366] hover:bg-[#1ebe57] text-white rounded-xl transition-colors flex-shrink-0 shadow-sm">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+  `;
+}
 
 function renderDoctors(filter) {
   const grid = document.getElementById('doc-grid');
   const filtered = filter === 'all' ? doctors : doctors.filter(d => d.category === filter);
-  grid.innerHTML = filtered.map(d => `
-    <div class="hover-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 flex flex-col">
-      <div class="relative overflow-hidden h-40 bg-gradient-to-br from-navy/10 to-teal/10 flex items-center justify-center">
-        <img src="${d.img}" alt="${d.name}" class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg" loading="lazy" />
-      </div>
-      <div class="p-4 flex flex-col flex-1">
-        <h3 class="font-bold text-text-dark text-sm leading-snug mb-1">${d.name}</h3>
-        <p class="text-teal text-xs font-semibold mb-1">${d.spec}</p>
-        <p class="text-text-gray text-xs mb-4">${d.day}</p>
-        <a href="#" class="mt-auto block w-full text-center py-2 border-2 border-teal text-teal hover:bg-teal hover:text-white text-xs font-bold rounded-xl transition-colors">
-          Lihat Jadwal
-        </a>
-      </div>
-    </div>
-  `).join('');
+  grid.innerHTML = filtered.map(doctorCardHTML).join('');
 }
 
 function filterDoc(cat) {
@@ -1734,28 +1759,14 @@ function searchDoctor() {
   if (spec) filtered = filtered.filter(d => d.spec.includes(spec) || d.category.includes(spec));
   if (name) filtered = filtered.filter(d => d.name.toLowerCase().includes(name));
   if (filtered.length === 0) {
-    grid.innerHTML = `<div class="col-span-4 text-center py-12 text-text-gray">
+    grid.innerHTML = `<div class="col-span-2 sm:col-span-3 lg:col-span-4 text-center py-12 text-text-gray">
       <div class="text-4xl mb-3">🔍</div>
       <p class="font-semibold">Dokter tidak ditemukan</p>
       <p class="text-sm">Coba kata kunci lain atau pilih spesialisasi berbeda</p>
     </div>`;
     return;
   }
-  grid.innerHTML = filtered.map(d => `
-    <div class="hover-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 flex flex-col">
-      <div class="relative overflow-hidden h-40 bg-gradient-to-br from-navy/10 to-teal/10 flex items-center justify-center">
-        <img src="${d.img}" alt="${d.name}" class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg" loading="lazy" />
-      </div>
-      <div class="p-4 flex flex-col flex-1">
-        <h3 class="font-bold text-text-dark text-sm leading-snug mb-1">${d.name}</h3>
-        <p class="text-teal text-xs font-semibold mb-1">${d.spec}</p>
-        <p class="text-text-gray text-xs mb-4">${d.day}</p>
-        <a href="#" class="mt-auto block w-full text-center py-2 border-2 border-teal text-teal hover:bg-teal hover:text-white text-xs font-bold rounded-xl transition-colors">
-          Lihat Jadwal
-        </a>
-      </div>
-    </div>
-  `).join('');
+  grid.innerHTML = filtered.map(doctorCardHTML).join('');
   document.getElementById('doctors').scrollIntoView({ behavior: 'smooth' });
 }
 

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title">Profil Dokter — RSMBS</title>
+  <meta name="description" id="page-desc" content="Profil dan jadwal dokter spesialis RSMBS — Rumah Sakit Muhammadiyah Bandung Selatan." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="profile" />
+  <meta name="theme-color" content="#2E2C71" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#2E2C71', 'navy-dark': '#1e1c5a',
+            teal: '#00B4D8', 'teal-dark': '#0096b5',
+            gold: '#F4A261',
+            'bg-light': '#F8FAFC',
+            'text-dark': '#1E293B',
+            'text-gray': '#64748B',
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            display: ['DM Serif Display', 'serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    .hover-card { transition: transform .25s, box-shadow .25s; }
+    .hover-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.12); }
+    .schedule-row { transition: background .2s; }
+    .schedule-row.today { background: linear-gradient(90deg, rgba(0,180,216,.08), rgba(46,44,113,.04)); }
+    .badge-pill { display: inline-flex; align-items: center; padding: .35rem .75rem; border-radius: 9999px; font-size: .75rem; font-weight: 600; }
+  </style>
+</head>
+<body class="font-sans bg-bg-light text-text-dark antialiased">
+
+<!-- ── Top Bar ── -->
+<div class="bg-navy text-white text-xs">
+  <div class="max-w-screen-xl mx-auto px-4 py-2 flex items-center justify-between gap-4">
+    <a href="tel:02286023290" class="flex items-center gap-1.5 hover:text-teal transition-colors">
+      <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.05-.24c1.12.45 2.33.69 3.58.69a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.24 2.46.69 3.58a1 1 0 01-.24 1.05l-2.33 2.16z"/></svg>
+      IGD 24 Jam: (022) 86023290
+    </a>
+    <a href="/" class="hidden sm:flex items-center gap-1.5 hover:text-teal transition-colors">
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M19 12H5m0 0l7 7m-7-7l7-7"/></svg>
+      Kembali ke Beranda
+    </a>
+  </div>
+</div>
+
+<!-- ── Navbar ── -->
+<nav class="bg-white sticky top-0 z-40 border-b border-gray-100 shadow-sm">
+  <div class="max-w-screen-xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2.5">
+      <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-navy to-teal flex items-center justify-center text-white font-bold text-sm shadow-md">RS</div>
+      <div>
+        <div class="font-display text-lg leading-none text-navy">RSMBS</div>
+        <div class="text-[10px] text-text-gray font-medium tracking-wide">PRIMA Islami 24 Jam</div>
+      </div>
+    </a>
+    <div class="flex items-center gap-2 sm:gap-4">
+      <a href="/#doctors" class="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-navy hover:text-teal transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M15 19l-7-7 7-7"/></svg>
+        Semua Dokter
+      </a>
+      <a id="nav-wa" href="#" target="_blank" class="bg-teal hover:bg-teal-dark text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-full transition-colors shadow-md shadow-teal/30 flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Buat Janji
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Breadcrumb ── -->
+<div class="bg-white border-b border-gray-100">
+  <div class="max-w-screen-xl mx-auto px-4 py-3 text-xs text-text-gray flex items-center gap-1.5 flex-wrap">
+    <a href="/" class="hover:text-navy">Beranda</a>
+    <span>/</span>
+    <a href="/#doctors" class="hover:text-navy">Dokter Spesialis</a>
+    <span>/</span>
+    <span id="bc-name" class="text-navy font-semibold">Memuat…</span>
+  </div>
+</div>
+
+<!-- ── Main Content (rendered by JS) ── -->
+<main id="doctor-detail" class="max-w-screen-xl mx-auto px-4 py-8 lg:py-12">
+  <div class="text-center py-20 text-text-gray">
+    <div class="text-4xl mb-3">⏳</div>
+    <p>Memuat profil dokter…</p>
+  </div>
+</main>
+
+<!-- ── Footer ringkas ── -->
+<footer class="bg-navy text-white py-10 px-4 mt-16">
+  <div class="max-w-screen-xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-sm">
+    <div>
+      <div class="flex items-center gap-2 mb-3">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-teal to-gold flex items-center justify-center font-bold text-xs">RS</div>
+        <div class="font-display text-xl">RSMBS</div>
+      </div>
+      <p class="text-white/70 leading-relaxed text-xs">Rumah Sakit Muhammadiyah Bandung Selatan — Pelayanan PRIMA Islami 24 Jam.</p>
+    </div>
+    <div>
+      <h4 class="font-bold mb-3 text-teal">Kontak</h4>
+      <ul class="space-y-2 text-white/70 text-xs">
+        <li><a href="tel:02286023290" class="hover:text-teal">📞 (022) 86023290</a></li>
+        <li><a href="https://wa.me/6281122222986" target="_blank" class="hover:text-teal">💬 0811-2222-2986</a></li>
+        <li>📧 info@rsmbs.ac.id</li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-bold mb-3 text-teal">Alamat</h4>
+      <p class="text-white/70 text-xs leading-relaxed">Jl. Raya Laswi, Ciheulang,<br/>Kec. Ciparay, Kab. Bandung,<br/>Jawa Barat 40375</p>
+    </div>
+    <div>
+      <h4 class="font-bold mb-3 text-teal">Tautan</h4>
+      <ul class="space-y-2 text-white/70 text-xs">
+        <li><a href="/" class="hover:text-teal">Beranda</a></li>
+        <li><a href="/#doctors" class="hover:text-teal">Dokter Spesialis</a></li>
+        <li><a href="/#how-to" class="hover:text-teal">Cara Daftar</a></li>
+        <li><a href="/#faq" class="hover:text-teal">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-screen-xl mx-auto mt-8 pt-6 border-t border-white/10 text-center text-xs text-white/50">
+    © 2026 Rumah Sakit Muhammadiyah Bandung Selatan · #RSMBSPRIMA
+  </div>
+</footer>
+
+<!-- ════ Chatbot (struktur sama dengan index, akan diaktifkan via script.js) ════ -->
+<button id="chatbot-button" aria-label="Buka SARI chatbot" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-xl hover:scale-110 transition-transform flex items-center justify-center text-white" style="background: linear-gradient(135deg, #2E2C71 0%, #00B4D8 100%);">
+  <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 4v-4z"/></svg>
+  <span id="chat-unread" class="hidden absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">0</span>
+</button>
+
+<div id="chat-window" class="hidden fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-3rem)] h-[560px] max-h-[calc(100vh-8rem)] bg-white rounded-2xl shadow-2xl flex-col overflow-hidden border border-gray-100">
+  <div class="flex items-center justify-between p-4 text-white" style="background: linear-gradient(135deg, #2E2C71, #00B4D8);">
+    <div class="flex items-center gap-2.5">
+      <div class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center font-bold text-sm">SA</div>
+      <div>
+        <div class="font-bold text-sm leading-tight">SARI</div>
+        <div class="text-[10px] text-white/80">Asisten Virtual RSMBS</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-1">
+      <button id="reset-btn" aria-label="Reset percakapan" class="p-1.5 hover:bg-white/15 rounded-full">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 4v5h5M20 20v-5h-5M4 20a8 8 0 0114-5M20 4a8 8 0 00-14 5"/></svg>
+      </button>
+      <button id="close-btn" aria-label="Tutup chat" class="p-1.5 hover:bg-white/15 rounded-full">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="chat-messages" class="flex-1 overflow-y-auto p-4 bg-bg-light"></div>
+  <div id="typing-indicator" class="px-4 py-2 text-xs text-text-gray hidden items-center gap-1.5"></div>
+  <div id="suggestion-panel" class="px-3 py-2 flex flex-wrap gap-1.5 border-t border-gray-100 bg-white hidden"></div>
+  <div class="p-3 border-t border-gray-100 bg-white flex items-center gap-2">
+    <input id="chat-input" type="text" placeholder="Ketik pertanyaan…" class="flex-1 px-3 py-2.5 rounded-full bg-bg-light border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal/30" />
+    <button id="send-btn" aria-label="Kirim" class="bg-teal hover:bg-teal-dark text-white p-2.5 rounded-full transition-colors">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21l20.99-9L2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script src="doctors-data.js"></script>
+<script>
+// ─── Render halaman detail dokter ────────────────────────────────────────────
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  const main = document.getElementById('doctor-detail');
+  const bc   = document.getElementById('bc-name');
+  const navWa = document.getElementById('nav-wa');
+
+  const doctor = window.DOCTOR_HELPERS.findById(id);
+
+  if (!doctor) {
+    bc.textContent = 'Dokter tidak ditemukan';
+    document.getElementById('page-title').textContent = 'Dokter tidak ditemukan — RSMBS';
+    main.innerHTML = `
+      <div class="text-center py-20">
+        <div class="text-5xl mb-4">🔍</div>
+        <h1 class="font-display text-3xl text-navy mb-2">Dokter tidak ditemukan</h1>
+        <p class="text-text-gray mb-6">Profil yang Anda cari tidak tersedia atau tautan tidak valid.</p>
+        <a href="/#doctors" class="inline-flex items-center gap-2 bg-navy hover:bg-navy-dark text-white font-bold px-6 py-3 rounded-full transition-colors">
+          ← Lihat Semua Dokter
+        </a>
+      </div>
+    `;
+    return;
+  }
+
+  // Update meta + breadcrumb
+  document.getElementById('page-title').textContent = `${doctor.name} — Spesialis ${doctor.spec} | RSMBS`;
+  document.getElementById('page-desc').setAttribute('content',
+    `Profil ${doctor.name}, Spesialis ${doctor.spec} di RSMBS. Pengalaman ${doctor.experienceYears} tahun. Lihat jadwal praktik & buat janji konsultasi.`);
+  bc.textContent = doctor.name;
+  navWa.href = window.DOCTOR_HELPERS.buildWaLink(doctor);
+
+  // Hari ini
+  const dayMap = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+  const todayName = dayMap[new Date().getDay()];
+
+  // Build jadwal lengkap (7 hari, mark hari ini)
+  const order = ['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'];
+  const scheduleByDay = Object.fromEntries(doctor.schedule.map(s => [s.day, s]));
+  const scheduleRows = order.map(day => {
+    const slot = scheduleByDay[day];
+    const isToday = day === todayName;
+    return `
+      <tr class="schedule-row ${isToday ? 'today' : ''} border-b border-gray-100 last:border-0">
+        <td class="py-3 px-4 font-semibold text-text-dark text-sm">
+          ${day}
+          ${isToday ? '<span class="ml-2 badge-pill bg-teal/10 text-teal">Hari ini</span>' : ''}
+        </td>
+        <td class="py-3 px-4 text-sm">
+          ${slot
+            ? `<span class="font-mono text-navy font-semibold">${slot.start} – ${slot.end}</span>`
+            : `<span class="text-text-gray italic">Tidak praktik</span>`}
+        </td>
+      </tr>
+    `;
+  }).join('');
+
+  // Dokter lain (kategori sama)
+  const related = window.DOCTORS.filter(d => d.id !== doctor.id && d.category === doctor.category).slice(0, 3);
+  const relatedHTML = related.length ? `
+    <section class="mt-12">
+      <h2 class="font-display text-2xl text-navy mb-1">Dokter Lainnya di Bidang ${doctor.category}</h2>
+      <p class="text-text-gray text-sm mb-6">Pilihan alternatif jika jadwal di atas tidak cocok</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        ${related.map(d => {
+          const groups = window.DOCTOR_HELPERS.getScheduleGroups(d.schedule);
+          const scheduleList = groups.slice(0, 3).map(g =>
+            `<li class="flex items-baseline gap-2"><span class="text-navy font-semibold w-12 flex-shrink-0">${g.days}</span><span class="text-text-gray font-mono">${g.time}</span></li>`
+          ).join('');
+          const more = groups.length > 3 ? `<li class="text-text-gray italic">+${groups.length - 3} hari lainnya</li>` : '';
+          return `
+            <article class="hover-card bg-white rounded-2xl p-5 shadow-md border border-gray-100">
+              <a href="dokter.html?id=${d.id}" class="flex items-center gap-3 mb-3">
+                <img src="${d.img}" alt="${d.name}" class="w-14 h-14 rounded-full object-cover border-2 border-teal/20 flex-shrink-0" loading="lazy"/>
+                <div class="flex-1 min-w-0">
+                  <div class="font-bold text-text-dark text-sm leading-tight">${d.name}</div>
+                  <div class="text-teal text-xs font-semibold mt-0.5">${d.spec}</div>
+                </div>
+              </a>
+              <ul class="space-y-1 text-xs mb-4 leading-relaxed">${scheduleList}${more}</ul>
+              <div class="flex gap-2">
+                <a href="dokter.html?id=${d.id}" class="flex-1 text-center py-2 border-2 border-teal text-teal hover:bg-teal hover:text-white text-xs font-bold rounded-xl transition-colors">Lihat Profil</a>
+                <a href="${window.DOCTOR_HELPERS.buildWaLink(d)}" target="_blank" rel="noopener noreferrer" aria-label="Buat janji dengan ${d.name} via WhatsApp" title="Buat janji via WhatsApp" class="flex items-center justify-center w-10 h-[38px] bg-[#25D366] hover:bg-[#1ebe57] text-white rounded-xl transition-colors flex-shrink-0">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </a>
+              </div>
+            </article>
+          `;
+        }).join('')}
+      </div>
+    </section>
+  ` : '';
+
+  // Render
+  main.innerHTML = `
+    <article>
+      <!-- Hero ── -->
+      <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="grid lg:grid-cols-[280px_1fr] gap-0">
+          <div class="bg-gradient-to-br from-navy/5 via-teal/5 to-gold/5 flex items-center justify-center p-8 lg:p-10">
+            <img src="${doctor.img}" alt="${doctor.name}" class="w-44 h-44 lg:w-52 lg:h-52 rounded-full object-cover border-4 border-white shadow-xl"/>
+          </div>
+          <div class="p-6 lg:p-10 flex flex-col">
+            <div class="flex items-start justify-between gap-3 flex-wrap mb-2">
+              <span class="badge-pill bg-teal/10 text-teal">${doctor.spec}</span>
+              <span class="badge-pill bg-navy/5 text-navy">${doctor.experienceYears}+ tahun pengalaman</span>
+            </div>
+            <h1 class="font-display text-3xl lg:text-4xl text-text-dark leading-tight mb-3">${doctor.name}</h1>
+            <p class="text-text-gray leading-relaxed mb-5">${doctor.bio}</p>
+            <div class="flex items-center gap-2 text-sm text-text-gray mb-5">
+              <svg class="w-4 h-4 text-navy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+              <span>${doctor.room}</span>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <a href="${window.DOCTOR_HELPERS.buildWaLink(doctor)}" target="_blank"
+                 class="inline-flex items-center gap-2 bg-teal hover:bg-teal-dark text-white font-bold px-6 py-3 rounded-full transition-colors shadow-md shadow-teal/30">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Buat Janji via WhatsApp
+              </a>
+              <a href="tel:02286023290" class="inline-flex items-center gap-2 border-2 border-navy text-navy hover:bg-navy hover:text-white font-bold px-6 py-3 rounded-full transition-colors">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.05-.24c1.12.45 2.33.69 3.58.69a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.24 2.46.69 3.58a1 1 0 01-.24 1.05l-2.33 2.16z"/></svg>
+                Hubungi Loket
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Konten utama: 2 kolom ── -->
+      <div class="grid lg:grid-cols-3 gap-6 mt-8">
+        <!-- Jadwal (ditonjolkan) -->
+        <div class="lg:col-span-2 bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+          <header class="px-6 py-5 border-b border-gray-100 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-teal/10 text-teal flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path stroke-linecap="round" d="M16 2v4M8 2v4M3 10h18"/></svg>
+            </div>
+            <div>
+              <h2 class="font-display text-xl text-navy leading-tight">Jadwal Praktik Mingguan</h2>
+              <p class="text-text-gray text-xs">Jadwal dapat berubah sewaktu-waktu — konfirmasi via WhatsApp untuk kepastian</p>
+            </div>
+          </header>
+          <table class="w-full">
+            <thead class="bg-bg-light text-text-gray text-xs uppercase tracking-wider">
+              <tr>
+                <th class="text-left py-2.5 px-4 font-semibold">Hari</th>
+                <th class="text-left py-2.5 px-4 font-semibold">Jam Praktik</th>
+              </tr>
+            </thead>
+            <tbody>${scheduleRows}</tbody>
+          </table>
+          <div class="px-6 py-4 bg-bg-light border-t border-gray-100 text-xs text-text-gray flex items-start gap-2">
+            <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 6l7.53 13H4.47L12 8zm-1 4v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+            <span>Mohon datang 15–30 menit sebelum jadwal untuk pengambilan nomor antrian.</span>
+          </div>
+        </div>
+
+        <!-- Sidebar info -->
+        <aside class="space-y-5">
+          <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6">
+            <h3 class="font-bold text-text-dark text-sm uppercase tracking-wider text-teal mb-3">Bidang Keahlian</h3>
+            <ul class="space-y-2">
+              ${doctor.expertise.map(e => `
+                <li class="flex items-start gap-2 text-sm text-text-dark">
+                  <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-teal" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                  <span>${e}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6">
+            <h3 class="font-bold text-text-dark text-sm uppercase tracking-wider text-teal mb-3">Pendidikan</h3>
+            <ul class="space-y-3">
+              ${doctor.education.map(e => `
+                <li class="flex items-start gap-2 text-sm text-text-dark leading-relaxed">
+                  <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-navy" fill="currentColor" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+                  <span>${e}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+
+          <div class="bg-gradient-to-br from-navy to-teal rounded-3xl shadow-md p-6 text-white">
+            <h3 class="font-bold text-sm uppercase tracking-wider text-white/80 mb-2">Butuh Bantuan?</h3>
+            <p class="text-sm text-white/90 mb-4 leading-relaxed">Tim pendaftaran siap membantu memilih jadwal yang paling cocok untuk Anda.</p>
+            <a href="https://wa.me/6281122222986" target="_blank" class="inline-flex items-center gap-2 bg-white text-navy font-bold px-4 py-2.5 rounded-full text-sm hover:bg-white/90 transition-colors w-full justify-center">
+              💬 Chat WhatsApp
+            </a>
+          </div>
+        </aside>
+      </div>
+
+      ${relatedHTML}
+    </article>
+  `;
+})();
+</script>
+<script src="script.js"></script>
+</body>
+</html>

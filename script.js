@@ -205,39 +205,64 @@ function formatMessage(text) {
   const lines = escaped.split('\n');
   const output = [];
   let listType = null;
-  let listItems = [];
+  let listItems = [];     // tiap item bisa multi-line (continuation indent)
+  let listIsRich = false; // true kalau ada item dengan continuation → render card-style
 
   const flushList = () => {
     if (listType && listItems.length) {
       const tag = listType;
-      output.push(`<${tag}>${listItems.map(li => `<li>${li}</li>`).join('')}</${tag}>`);
+      const cls = listIsRich ? ' class="rich"' : '';
+      output.push(`<${tag}${cls}>${listItems.map(li => `<li>${li}</li>`).join('')}</${tag}>`);
       listItems = [];
       listType = null;
+      listIsRich = false;
     }
   };
 
   for (const rawLine of lines) {
-    const line = rawLine.trim();
-    const ulMatch = line.match(/^[*\-]\s+(.+)/);
-    const olMatch = line.match(/^\d+[.)]\s+(.+)/);
+    const trimmed = rawLine.trim();
+    const indented = /^\s{2,}\S/.test(rawLine);
+    const ulMatch = trimmed.match(/^[*\-]\s+(.+)/);
+    const olMatch = trimmed.match(/^\d+[.)]\s+(.+)/);
+    const headingMatch = trimmed.match(/^(#{1,3})\s+(.+)/);
+
+    // Heading h3/h4 (## atau ### → header bubble di chat)
+    if (headingMatch) {
+      flushList();
+      const level = Math.min(headingMatch[1].length + 2, 4); // ## → h4, ### → h5
+      output.push(`<h${level} class="chat-h">${applyInline(headingMatch[2])}</h${level}>`);
+      continue;
+    }
 
     if (ulMatch) {
       if (listType === 'ol') flushList();
       listType = 'ul';
       listItems.push(applyInline(ulMatch[1]));
-    } else if (olMatch) {
+      continue;
+    }
+
+    if (olMatch) {
       if (listType === 'ul') flushList();
       listType = 'ol';
       listItems.push(applyInline(olMatch[1]));
-    } else {
-      flushList();
-      if (line === '') {
-        if (output.length > 0 && output[output.length - 1] !== '<br>') {
-          output.push('<br>');
-        }
-      } else {
-        output.push(`<p>${applyInline(line)}</p>`);
+      continue;
+    }
+
+    // Continuation line: di dalam list, indented, ada item terakhir untuk di-append
+    if (listType && indented && listItems.length && trimmed) {
+      listItems[listItems.length - 1] += `<span class="li-meta">${applyInline(trimmed)}</span>`;
+      listIsRich = true;
+      continue;
+    }
+
+    // Bukan list/continuation → tutup list, render paragraph
+    flushList();
+    if (trimmed === '') {
+      if (output.length > 0 && output[output.length - 1] !== '<br>') {
+        output.push('<br>');
       }
+    } else {
+      output.push(`<p>${applyInline(trimmed)}</p>`);
     }
   }
   flushList();
@@ -344,12 +369,9 @@ function playNotification() {
 }
 
 function showWelcome() {
-  const welcomeText = `Selamat datang di RSMBS — Rumah Sakit Mitra Bandung Selatan! 👋
+  const welcomeText = `Halo, saya **SARI** — asisten virtual RSMBS 👋
 
-Saya SARI, asisten virtual yang kini didukung oleh kecerdasan buatan (Google Gemini AI).
-Saya siap menjawab pertanyaan Anda secara natural dan cerdas.
-
-Ada yang bisa saya bantu hari ini? 😊`;
+Tanyakan apa saja seputar dokter, jadwal, BPJS, atau pendaftaran.`;
   addMessage('bot', welcomeText);
   renderSuggestions(quickActions);
 }

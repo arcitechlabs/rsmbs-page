@@ -276,14 +276,77 @@
 .message.user .message-bubble { white-space: pre-line; }
 
 /* Bot bubble markdown */
-.message.bot .message-bubble p          { margin: 0 0 6px 0; line-height: 1.65; }
-.message.bot .message-bubble p:last-child { margin-bottom: 0; }
+.message.bot .message-bubble p              { margin: 0 0 6px 0; line-height: 1.65; }
+.message.bot .message-bubble p:last-child   { margin-bottom: 0; }
+.message.bot .message-bubble strong         { font-weight: 700; color: #1e293b; }
+.message.bot .message-bubble br             { display: block; content: ''; margin-top: 4px; }
+
+/* Heading dalam bubble (## / ###) */
+.message.bot .message-bubble .chat-h {
+  font-family: 'DM Serif Display', 'Plus Jakarta Sans', serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #2E2C71;
+  margin: 6px 0 8px 0;
+  letter-spacing: -0.01em;
+}
+.message.bot .message-bubble .chat-h:first-child { margin-top: 0; }
+
+/* List default (bullet/number) untuk konten ringan */
 .message.bot .message-bubble ul,
-.message.bot .message-bubble ol         { margin: 4px 0 6px 0; padding-left: 20px; }
-.message.bot .message-bubble li         { margin-bottom: 4px; line-height: 1.55; }
-.message.bot .message-bubble li:last-child { margin-bottom: 0; }
-.message.bot .message-bubble strong     { font-weight: 600; color: #1e293b; }
-.message.bot .message-bubble br         { display: block; content: ''; margin-top: 4px; }
+.message.bot .message-bubble ol {
+  margin: 6px 0 8px 0;
+  padding-left: 20px;
+}
+.message.bot .message-bubble li               { margin-bottom: 4px; line-height: 1.55; }
+.message.bot .message-bubble li:last-child    { margin-bottom: 0; }
+
+/* List "rich" (item multi-baris) → card-like, list-marker dimatikan */
+.message.bot .message-bubble ul.rich,
+.message.bot .message-bubble ol.rich {
+  list-style: none;
+  padding-left: 0;
+  counter-reset: rich-counter;
+}
+.message.bot .message-bubble ul.rich > li,
+.message.bot .message-bubble ol.rich > li {
+  position: relative;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 3px solid #00B4D8;
+  border-radius: 10px;
+  padding: 8px 12px 8px 14px;
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+.message.bot .message-bubble ol.rich > li {
+  counter-increment: rich-counter;
+  padding-left: 36px;
+}
+.message.bot .message-bubble ol.rich > li::before {
+  content: counter(rich-counter);
+  position: absolute;
+  left: 10px;
+  top: 8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: #00B4D8;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.message.bot .message-bubble li .li-meta {
+  display: block;
+  margin-top: 2px;
+  font-size: 12.5px;
+  color: #64748b;
+  line-height: 1.5;
+}
+.message.bot .message-bubble li .li-meta strong { color: #2E2C71; }
 
 .message-bubble a {
   color: #0096b5;

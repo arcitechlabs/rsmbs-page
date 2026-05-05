@@ -13,7 +13,21 @@
       "Bash(npx ts-node:*)",
       "Bash(echo \"PID: $!\")",
       "Read(//private/tmp/**)",
-      "Bash(curl -s -X POST http://localhost:5001/api/chat -H 'Content-Type: application/json' -d '{\"message\":\"halo\",\"sessionId\":\"test1\"}')"
+      "Bash(curl -s -X POST http://localhost:5001/api/chat -H 'Content-Type: application/json' -d '{\"message\":\"halo\",\"sessionId\":\"test1\"}')",
+      "Bash(rtk git *)",
+      "Bash(rtk ls *)",
+      "Bash(rtk read *)",
+      "Bash(rtk grep *)",
+      "Bash(rtk wc *)",
+      "Bash(rtk tsc *)",
+      "Bash(node -e ' *)",
+      "Bash(rtk npx *)",
+      "Bash(./node_modules/.bin/tsc --noEmit --target es2020 --module commonjs --esModuleInterop --skipLibCheck --resolveJsonModule ../netlify/functions/chat.ts ../netlify/functions/data.ts)",
+      "Bash(/Users/aha.id/Documents/rubby/Project/RSMBS-PRO/backend/node_modules/.bin/tsc --noEmit --target es2020 --module commonjs --esModuleInterop --skipLibCheck --resolveJsonModule /Users/aha.id/Documents/rubby/Project/RSMBS-PRO/netlify/functions/chat.ts /Users/aha.id/Documents/rubby/Project/RSMBS-PRO/netlify/functions/data.ts)",
+      "Bash(./backend/node_modules/.bin/tsc --noEmit --target es2020 --module commonjs --esModuleInterop --skipLibCheck --resolveJsonModule --types node netlify/functions/chat.ts netlify/functions/data.ts)",
+      "Bash(/Users/aha.id/Documents/rubby/Project/RSMBS-PRO/backend/node_modules/.bin/tsc --noEmit --target es2020 --module commonjs --esModuleInterop --skipLibCheck --resolveJsonModule chat.ts data.ts)",
+      "Bash(/Users/aha.id/Documents/rubby/Project/RSMBS-PRO/backend/node_modules/.bin/tsc --noEmit --target es2020 --module commonjs --esModuleInterop --skipLibCheck --resolveJsonModule --types node chat.ts data.ts)",
+      "Bash(echo \"---exit: $?\")"
     ]
   }
 }
